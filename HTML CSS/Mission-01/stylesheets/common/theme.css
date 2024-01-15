@@ -1,0 +1,9 @@
+/* Theme Style */
+:root {
+    --color-blue : #0074E9 ; 
+    --color-red : #E52330;
+    --color-green : #c7cd1d;
+    --color-black: #181818;
+    --color-grey : #AAA9A9;
+    --color-darkGrey : rgba(0,0,0,0.2);
+}

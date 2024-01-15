@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>헤더 - 쿠팡(Coupang)</title>
+  <link rel="icon" href="/assets/favicon/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./stylesheets/main.css">
+  <script src="./js/main.js" defer></script>
+</head>
+
+<body>
+  <ul class="clearFix">
+    <li class="login"><a href="/">로그인</a></li>
+    <li class="join"><a href="/">회원가입</a></li>
+    <li class="cs-center"><a href="/">고객센터</a></li>
+    <li class="clearFix-blank"></li>
+    <li class="coupang-play"><a href="/">쿠팡플레이</a></li>
+    <li class="partership-marketing"><a href="/">제휴마케팅</a></li>
+  </ul>
+  <div class="header-container">
+    <button class="button--category">
+      <span class="category-button"></span>
+      <span class="category-button-info">카테고리</span>
+    </button>
+    <h1 class="logo"><a href="https://www.coupang.com/" target="_blank" rel="noopener" class="blind">Coupang</a></h1>
+    <form class="search" method="POST">
+      <select name="select-category" id="select-category">
+        <option value="">전체</option>
+        <option value="">여성패션</option>
+        <option value="">남성패션</option>
+        <option value="">남녀 공용 의류</option>
+        <option value="">유아동패션</option>
+        <option value="">뷰티</option>
+        <option value="">출산/유아동</option>
+        <option value="">식품</option>
+        <option value="">주방용품</option>
+        <option value="">생활용품</option>
+        <option value="">홈인테리어</option>
+        <option value="">가전디지털</option>
+        <option value="">스포츠/레저</option>
+        <option value="">자동차용품</option>
+        <option value="">도서/음반/DVD</option>
+        <option value="">완구/취미</option>
+        <option value="">문구/오피스</option>
+        <option value="">반려동품용품</option>
+        <option value="">헬스/건강식품</option>
+        <option value="">국내여행</option>
+        <option value="">해외여행</option>
+        <option value="">로켓럭셔리</option>
+        <option value="">로켓설치</option>
+        <option value="">공간별 집꾸미기</option>
+        <option value="">헬스케어 전문관</option>
+        <option value="">쿠팡 Only</option>
+        <option value="">싱글라이프</option>
+        <option value="">악기전문관</option>
+        <option value="">결혼준비</option>
+        <option value="">아트/공예</option>
+        <option value="">미세먼지용품</option>
+        <option value="">홈카페</option>
+        <option value="">실버스토어</option>
+        <option value="">로켓펫닥터</option>
+      </select>
+      <input class="search-input" type="search" placeholder="찾고 싶은 상품을 검색해 보세요!" required>
+      <button aria-label="음성 검색 버튼" class="voice-search" type="submit"></button>
+      <button aria-label="키워드 검색 버튼" class="keyword-search" type="submit"></button>
+    </form>
+    <ul class="menu">
+      <li><a href="/"><img src="./assets/icon/icon-rocket.svg" alt="로켓배송 아이콘">로켓배송</a></li>
+      <li><a href="/"><img src="./assets/icon/icon-fresh.svg" alt="로켓프레시 아이콘">로켓프레시</a></li>
+      <li><a href="/">2023년 설날 <img src="./assets/icon/new.svg" alt="신규 아이콘"></a></li>
+      <li><a href="/">로켓직구</a></li>
+      <li><a href="/">골드박스</a></li>
+      <li><a href="/">정기배송</a></li>
+      <li><a href="/">이벤트/쿠폰</a></li>
+      <li><a href="/">기획전</a></li>
+      <li><a href="/">여행티켓</a></li>
+    </ul>
+    <div class="myCoupang">
+      <button>마이쿠팡</button>
+      <ul>
+        <li><a href="">주문 목록</a></li>
+        <li><a href="">취소/반품</a></li>
+        <li><a href="">찜리스트</a></li>
+      </ul>
+    </div>
+    <div class="cart">
+      <button>장바구니</button>
+      <div class="cart-amount">0</div>
+      <div class="cart-message">장바구니에 담긴 상품이 없습니다.</div>
+    </div>
+  </div>
+  <hr>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+/* 오늘의 발견 */
+main {
+    width: 1020px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.logo{
+    margin: 100px 0px 76px;
+    width: 176px;
+}
+
+.headline h2 {
+    display: inline;
+    font-weight: 500;
+}
+
+.headline span:first-of-type {
+    color: var(--color-grey);
+    font-weight:900;
+    vertical-align: 18%;
+    margin: 0 4px;
+}
+
+.headline span:last-of-type {
+    color: var(--color-grey);
+    font-size: 1rem;
+    font-weight: 400;
+    vertical-align: 12%;
+}
+
+.discovery-items {
+    list-style: none;
+    position: relative;
+    float: left;
+    margin: 16px 16px 0px 0px;
+    border: 1px solid var(--color-grey);
+    width: 243px;
+    height: 310px;
+    cursor: pointer;
+}
+
+ .cardColumn2{
+    width: 502px;
+}
+
+.discovery-items:nth-child(2),.discovery-items:nth-child(6),.discovery-items:last-child{
+    margin-right: 0px;
+}
+
+
+.discovery-items a {
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+}
+
+
+.discovery-items img {
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
+
+.purchase {
+    background-color: var(--color-darkGrey);
+    border: none;
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: 248px;
+    left: 20px;
+    cursor: pointer;
+}
+
+.discovery-items:hover,
+.discovery-items a:focus{
+    border: 1px solid var(--color-blue);
+    transition: 0.2s;
+}
+
+
+.discovery-items:hover .purchase, .discovery-items a:focus .purchase{
+    background-color: var(--color-blue);
+    width: 112px;
+    transition: 0.2s;
+} 
+
+.discovery-items:hover .purchase img, .discovery-items a:focus .purchase img{
+    display: none;
+}
+
+.discovery-items:hover .purchase::before, .discovery-items a:focus .purchase::before {
+    content: "구매하기";
+    color: white;
+    position: absolute;
+    left: 15%;
+    top: 18%;
+}
+
+.discovery-items:hover .purchase::after, .discovery-items a:focus .purchase::after {
+    content: url("../../assets/icon/angle-right-square.svg");
+    position: absolute;
+    right: 1%;
+    top: 0;
+} */
+

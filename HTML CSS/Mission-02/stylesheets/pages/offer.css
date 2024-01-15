@@ -1,0 +1,107 @@
+/* 오늘의 쇼핑 제안 */
+main {
+    width: 1022px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+h1 a {
+    display: block;
+    margin: 100px 0px 48px;
+}
+
+.promotion-header h2{
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+
+.promotion-header h2::before {
+  content: url(../../assets/icon/shopping.svg);
+  vertical-align: top;
+}
+
+.promotion-items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.promotion-item {
+    display: inline-block;
+    width: 200px;
+    height: 270px;
+    text-align: left;
+    position: relative;
+}
+
+.promotion-item-img {
+    text-align: center;
+}
+
+.promotion-item-img img{
+    width: 160px;
+    margin: 14px 0 12px;
+}
+
+.discount-word {
+    width: 53px;
+    height: 30px;
+    border-radius: 0 0 4px 0;
+    text-align: center;
+    padding-top: 5px;
+    background-color: var(--color-red-500);
+    color: var(--color-white);
+    font-weight: 500;
+    position: absolute;
+    top: 0px;
+    font: 1.6rem/1.15 var(--font-family-num);
+}
+
+.promotion-item-info {
+    height: 66px;
+    font-size: 1.4rem;
+    margin-left: 14px;
+}
+
+.item-title {
+    margin-bottom: 10px;
+}
+
+.Shipping span {
+    color: var(--color-gray-700);
+}
+
+.promotion-item-rate {
+    margin-top: 5px;
+}
+
+.rate-star {
+    width: 68px;
+    height: 16px;
+    display: inline-block;
+}
+
+#star-furniture { 
+    background: url(../../assets/sprites/rating-stars.png)0 -124px;
+}
+
+#star-renton { 
+    background: url(../../assets/sprites/rating-stars.png)0 -124px;
+}
+
+#star-drying-rack { 
+    background: url(../../assets/sprites/rating-stars.png)0 -110px;
+}
+
+#star-boohgle { 
+    background: url(../../assets/sprites/rating-stars.png)0 -137.9px;
+}
+
+#star-deskset { 
+    background: url(../../assets/sprites/rating-stars.png)0 -110px;
+}
+
+.promotion-item-rate span {
+    font: 400 1.4rem/1.15 var(--font-family-num);
+    color: var(--color-gray-700);
+}

@@ -1,0 +1,12 @@
+/* Base Style */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+*:focus{
+    outline: none;
+}
