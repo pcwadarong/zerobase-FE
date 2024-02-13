@@ -1,4 +1,5 @@
 # zerobase-FE
+<<<<<<< HEAD
 
 - 제로베이스 프론트엔드 스쿨을 수강하며 진행한 HTML/CSS, JS, REACT 과제입니다.
 
@@ -8,6 +9,7 @@
 
 ## JAVASCRIPT
 
+=======
 - 제로베이스 프론트엔드 스쿨을 수강하며 진행한 HTML/CSS, JS, REACT 과제입니다.
 
 ## HTML/ CSS
