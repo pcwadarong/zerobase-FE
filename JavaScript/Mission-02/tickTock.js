@@ -1,11 +1,7 @@
 const tickTock = $container => {
-  //시침, 분침, 초침 가져오기
-const hourHand = document.querySelector('.hour');
-const minuteHand = document.querySelector('.minute');
-const secondHand = document.querySelector('.second');
 
 //시침, 분침, 초침 각도 설정하기
-const hourHands = document.querySelectorAll('.hour');
+  const hourHands = document.querySelectorAll('.hour');
   const minuteHands = document.querySelectorAll('.minute');
   const secondHands = document.querySelectorAll('.second');
 

@@ -13,3 +13,8 @@ $containers.forEach(($container, i) => {
     $currentRatings[i].textContent = rating;
   });
 });
+
+// css 파일을 자동 추가
+document.getElementsByTagName("head")[0].insertAdjacentHTML(
+  "beforeend", '<link href="star-rating/theme.css" rel="stylesheet" />' 
+);
