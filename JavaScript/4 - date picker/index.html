@@ -4,22 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Toggle side nav</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=block" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/style.css" />
-    <script type="module" src="app.js"></script>
+    <title>Date Picker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script type="module" src="./components/app.js"></script>
   </head>
   <body>
-    <h1>Date Picker</h1>
-
-    <div class="canledar">
-      <div class="calendar-nav">
-
+    <section>
+      <h1>Date Picker</h1>
+      <input type="text" placeholder="Select date" readonly class="datePicker">
+      <div class="calendar hidden">
+        <!--<div class="calendar hidden">-->
+        <div class="calendar-nav">
+          <a href="javascript:;" class="nav-btn go-prev"></a>
+          <div class="year-month"></div>
+          <a href="javascript:;" class="nav-btn go-next"></a>
+        </div>
+        <div class="calendar-grid">
+          <div class="days">
+            <div class="day">SUN</div>
+            <div class="day">MON</div>
+            <div class="day">TUE</div>
+            <div class="day">WED</div>
+            <div class="day">THU</div>
+            <div class="day">FRI</div>
+            <div class="day">SAT</div>
+          </div>
+          <div class="dates">
+          </div>
+        </div>
       </div>
-      <div class="calendar-grid">
-
-      </div>
-    </div>
-    
+    </section>
   </body>
 </html>
