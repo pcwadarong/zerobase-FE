@@ -1,3 +1,4 @@
+/** class의 visibility를 조절하는 함수 */
 const Visibility = ($calendar, $input) => {
     // 캘린더 토글을 보이도록 hidden 클래스 삭제
     $calendar.classList.remove('hidden');

@@ -1,13 +1,14 @@
 import generate from './generate.js'
 import Visibility from './visibility.js';
 
+/** calendar의 nav 부분을 구현하는 함수 */
 const Calendar = (currentMonth, currentYear, $input) => {
     const $month = document.querySelector(".year-month");
     const $calendar = document.querySelector('.calendar');
-
+    
     Visibility($calendar, $input);
 
-    // 월을 문자열로 변환
+    // 월을 문자열로 변환 후 이번 달 설정
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
@@ -17,13 +18,8 @@ const Calendar = (currentMonth, currentYear, $input) => {
     // 년도와 월 문서에 삽입
     $month.innerHTML = `${month}<p>${currentYear}</p>`;
 
-    //현재 달의 첫 번재 요일 / 마지막 요일, 날짜
-    let firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    let lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
-    let lastDay = new Date(currentYear, currentMonth + 1, 0).getDay();
-
-    // 함수 호출
-    generate(currentYear, currentMonth, firstDay, lastDate, lastDay, $input, $calendar);
+    // 달력 날짜부분을 구현하는 함수 호출
+    generate(currentYear, currentMonth, $input, $calendar);
 }
 
 export default Calendar;
