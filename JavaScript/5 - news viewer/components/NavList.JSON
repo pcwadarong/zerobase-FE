@@ -1,0 +1,32 @@
+{
+    "categories": [
+      {
+        "innerHTML": "전체보기",
+        "id": "all"
+      },
+      {
+        "innerHTML": "비즈니스",
+        "id": "business"
+      },
+      {
+        "innerHTML": "엔터테인먼트",
+        "id": "entertainment"
+      },
+      {
+        "innerHTML": "건강",
+        "id": "health"
+      },
+      {
+        "innerHTML": "과학",
+        "id": "science"
+      },
+      {
+        "innerHTML": "스포츠",
+        "id": "sports"
+      },
+      {
+        "innerHTML": "기술",
+        "id": "technology"
+      }
+    ]
+  }

@@ -1,4 +1,5 @@
 import Nav from './Nav.js';
-import NewsList from './NewsList.js';
+//import NewsList from './NewsList.js';
 
-export { Nav, NewsList };
+export { Nav };
+//export { Nav, NewsList };
