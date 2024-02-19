@@ -24,10 +24,14 @@ section {
 
 .calendar {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     top: 104px;
+    width: var(--calendar-width);
+    height: calc(var(--calendar-width) / 0.88);
     border-radius: 10px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.20);
-    width: var(--calendar-size);
+    font-size: calc(var(--calendar-width) / 22);
     .calendar-nav {
         display: flex;
         align-items: center;
@@ -56,7 +60,12 @@ section {
     }
     
     .calendar-grid {
-        padding: 16px;
+        padding: 5%;
+        text-align: center;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: space-evenly;
 
       .days {
         display: grid;
@@ -65,16 +74,37 @@ section {
         color: $gray;
         margin-bottom: 20px;
       }
-  
+      
       .dates {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        gap : 10px;
-        text-align: center;
+        flex-grow: 1;
 
+        .date {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            max-height: calc(var(--calendar-width) / 8);
+            &:hover {
+                background-color: $green;
+                color: white;
+            }
+        }
         .prev-month,
         .next-month {
             color: $gray;
+        }
+
+        .sunday {
+            color: $red;
+            
+        }
+        .today {
+            border : 1px solid $green;
         }
       }
     }

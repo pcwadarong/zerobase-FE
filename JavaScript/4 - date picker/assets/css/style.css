@@ -1,3 +1,7 @@
+:root {
+  --calendar-width: 360px;
+}
+
 body {
   line-height: normal;
   scroll-behavior: smooth;
@@ -135,10 +139,14 @@ section .datePicker:focus {
 
 .calendar {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   top: 104px;
+  width: var(--calendar-width);
+  height: calc(var(--calendar-width) / 0.88);
   border-radius: 10px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.2);
-  width: var(--calendar-size);
+  font-size: calc(var(--calendar-width) / 22);
 }
 .calendar .calendar-nav {
   display: flex;
@@ -167,7 +175,12 @@ section .datePicker:focus {
   transform: rotate(-45deg);
 }
 .calendar .calendar-grid {
-  padding: 16px;
+  padding: 5%;
+  text-align: center;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .calendar .calendar-grid .days {
   display: grid;
@@ -179,10 +192,29 @@ section .datePicker:focus {
 .calendar .calendar-grid .dates {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  text-align: center;
+  flex-grow: 1;
+}
+.calendar .calendar-grid .dates .date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  max-height: calc(var(--calendar-width) / 8);
+}
+.calendar .calendar-grid .dates .date:hover {
+  background-color: #5CD17B;
+  color: white;
 }
 .calendar .calendar-grid .dates .prev-month,
 .calendar .calendar-grid .dates .next-month {
   color: #95989a;
+}
+.calendar .calendar-grid .dates .sunday {
+  color: #C34834;
+}
+.calendar .calendar-grid .dates .today {
+  border: 1px solid #5CD17B;
 }
