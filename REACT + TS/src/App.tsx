@@ -1,9 +1,9 @@
-import './App.css';
+import Router from './router/router';
 
-function App() {
-  return <div>
-    {'hi'}
-  </div>;
+export default function App(): JSX.Element {
+  return (
+    <div>
+      <Router />
+    </div>
+  )
 }
-
-export default App;
