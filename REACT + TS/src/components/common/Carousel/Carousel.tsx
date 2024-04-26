@@ -1,8 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
-import { ChevronRight } from 'lucide-react';
-import { ChevronLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { clsx } from 'clsx';
+import Indicator from './CarouselIndicator';
+import CarouselBtn from './CarouselBtn';
 
 interface Props {
   carouselList: string[];
@@ -95,38 +93,8 @@ export default function Carousel({ carouselList }: Props) {
           </li>
         ))}
       </ul>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute left-1 top-2/4 z-20"
-        onClick={() => handleSwipe(-1)}
-      >
-        <ChevronLeft className="h-4 w-4" />
-      </Button>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute right-1 top-2/4 z-20"
-        onClick={() => handleSwipe(1)}
-      >
-        <ChevronRight className="h-4 w-4" />
-      </Button>
-      <ul className="absolute bottom-[-250px] flex top-2/4 z-10 w-full justify-center items-center">
-        {carouselList.map((_, index) => (
-          <li
-            style={{
-              transition: 'all 0.5s ease-in-out',
-            }}
-            key={index}
-            className={clsx(
-              'w-1 h-1 bg-slate-400/80 rounded-full my-4 mx-1.5 z-10',
-              {
-                'bg-black/80': index === currIndex,
-              },
-            )}
-          ></li>
-        ))}
-      </ul>
+      <CarouselBtn handleSwipe={handleSwipe} />
+      <Indicator carouselList={carouselList} currIndex={currIndex} />
       <div className="absolute top-0 left-0 w-full h-full z-1 bg-white/35"></div>
     </div>
   );

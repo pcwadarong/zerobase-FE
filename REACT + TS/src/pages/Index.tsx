@@ -1,5 +1,5 @@
 //import Slider from "../components/common/Slider";
-import Carousel from '../components/common/Carousel';
+import Carousel from '../components/common/Carousel/Carousel';
 import Nav from '../components/layout/Nav';
 import { carouselList } from '@/lib/carouselImg';
 
