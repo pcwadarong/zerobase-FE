@@ -7,7 +7,7 @@ import { carouselList } from '@/lib/carouselImg';
 const Index = (): JSX.Element => {
   return (
     <>
-      <section>
+      <section className='overflow-hidden'>
         <Nav />
         <Carousel carouselList={carouselList} />
       </section>

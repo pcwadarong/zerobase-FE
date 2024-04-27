@@ -3,7 +3,6 @@ import carousel2 from './../assets/carousel/2.jpg';
 import carousel3 from './../assets/carousel/3.jpg';
 import carousel4 from './../assets/carousel/4.jpg';
 import carousel5 from './../assets/carousel/5.jpg';
-// import carousel6 from './../assets/carousel/5.jpg';
 
 export const carouselList = [
   carousel1,

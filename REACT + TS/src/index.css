@@ -75,10 +75,21 @@
   }
 }
 
+@font-face {
+  font-family: 'pretendard-rg';
+  src: url('/Pretendard-Regular.otf');
+}
+
+@font-face {
+  font-family: 'pretendard-li';
+  src: url('/Pretendard-Light.otf');
+}
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: 'pretendard-li';
 }
 
 body {
@@ -114,8 +125,8 @@ button:disabled {
 }
 
 .menuToggle {
-  @apply flex flex-col w-96 absolute z-50
+  @apply flex flex-col w-96 gap-5
   transition-transform duration-500 ease-in-out
-  bg-white p-10 gap-5
+  bg-white p-10 absolute z-50 top-0 h-screen
   sm:left-[1vh];
 }
