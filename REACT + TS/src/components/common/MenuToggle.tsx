@@ -19,8 +19,8 @@ export default function Toggle() {
     <div>
       <div
         onClick={toggleMenu}
-        className={`z-40 bg-black/50 absolute inset-0 transition-opacity duration-500 ease-in-out ${isOpened ? 'opacity-100' : 'opacity-0'}`}
-        style={{ visibility: isOpened ? 'visible' : 'hidden' }}
+        className={`z-40 bg-black/50 absolute inset-0 duration-500 ease-in-out ${isOpened ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+        style={{ transitionProperty: 'opacity, visibility' }}
       />
       <button onClick={toggleMenu}>
         <img src={hamburger} alt="hamburger button" width="40px" />
