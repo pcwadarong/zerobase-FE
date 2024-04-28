@@ -76,8 +76,8 @@
 }
 
 @font-face {
-  font-family: 'pretendard-rg';
-  src: url('/Pretendard-Regular.otf');
+  font-family: 'pretendard-Ex';
+  src: url('/Pretendard-Extrabold.otf');
 }
 
 @font-face {
@@ -122,6 +122,10 @@ button {
 
 button:disabled {
   cursor: not-allowed;
+}
+
+.font-extra {
+  font-family: 'pretendard-Ex';
 }
 
 .menuToggle {

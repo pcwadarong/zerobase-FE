@@ -3,7 +3,8 @@ import { Separator } from '../ui/separator';
 export default function Footer() {
   return (
     <div className="py-10 font-light flex gap-7 flex-col items-center">
-      <img src="/logo.png" alt="logo" width="60px" className="mb-3" />
+      <Separator />
+      <img src="/logo.png" alt="logo" width="60px" className="my-5 mb-3" />
       <ul className="flex gap-8">
         <li className="cursor-pointer">CONTACT US</li>
         <li className="cursor-pointer">SERVICES</li>

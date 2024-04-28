@@ -10,7 +10,7 @@ export default function Nav() {
   const nav = useNavigate();
 
   return (
-    <div className="flex justify-between p-7 items-center fixed z-10 drop-shadow-lg bg-white/80 w-full">
+    <div className="flex h-28 justify-between p-7 items-center fixed z-10 drop-shadow-lg bg-white/80 w-full">
       <div className="flex gap-8 w-5/12 text-right items-center">
         <Toggle />
         <button onClick={() => nav('/')} className="text-lg">BEST</button>
