@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Category } from '../constants/category';
 import { Button } from '../ui/button';
 import xButton from './../../assets/xButton.svg';
@@ -11,15 +11,11 @@ export default function Toggle() {
     setOpen((isOpened) => !isOpened);
   };
 
-  useEffect(() => {
-    console.log('a');
-  }, [isOpened]);
-
   return (
     <div>
       <div
         onClick={toggleMenu}
-        className={`z-40 bg-black/50 absolute inset-0 duration-500 ease-in-out ${isOpened ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+        className={`z-40 bg-black/50 absolute inset-0 h-screen duration-500 ease-in-out ${isOpened ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
         style={{ transitionProperty: 'opacity, visibility' }}
       />
       <button onClick={toggleMenu}>

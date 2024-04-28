@@ -13,7 +13,7 @@ const Error = (): JSX.Element => {
         <div className="text-sm">{'This page could not be found.'}</div>
       </div>
       <div className="text-center ">
-        <Button onClick={()=>{nav('/')}} variant="outline">{'Go to Home'}</Button>
+        <Button variant="outline" onClick={()=>{nav('/')}}>{'Go to Home'}</Button>
       </div>
     </div>
   );

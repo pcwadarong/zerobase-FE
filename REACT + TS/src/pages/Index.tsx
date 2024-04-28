@@ -12,7 +12,8 @@ const Index = (): JSX.Element => {
         <Carousel carouselList={carouselList} />
       </section>
       <section>
-
+        <div className='h-96'>Today's Best</div>
+        <div className='h-96'>Best Sellers</div>
       </section>
       <Footer />
     </>

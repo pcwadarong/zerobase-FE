@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import NavSearchBar from '../common/NavSearchBar';
 import Toggle from '../common/MenuToggle';
-import search from '../../assets/search.svg';
 import user from '../../assets/user.svg';
 import shopping from '../../assets/shooping.svg';
 import sun from '../../assets/sun.svg';
@@ -10,11 +10,11 @@ export default function Nav() {
   const nav = useNavigate();
 
   return (
-    <div className="flex justify-between p-7 items-center">
-      <div className="flex gap-8 w-1/4 text-right items-center">
+    <div className="flex justify-between p-7 items-center fixed z-10 drop-shadow-lg bg-white/80 w-full">
+      <div className="flex gap-8 w-5/12 text-right items-center">
         <Toggle />
-        <button className='text-lg'>BEST</button>
-        <button className='text-lg'>NEW</button>
+        <button onClick={() => nav('/')} className="text-lg">BEST</button>
+        <button onClick={() => nav('/')} className="text-lg">NEW</button>
       </div>
       <img
         onClick={() => nav('/')}
@@ -23,14 +23,18 @@ export default function Nav() {
         width="40px"
         className="cursor-pointer"
       />
-      <ul className="flex gap-8 w-1/4 justify-end">
-        <img src={search} alt="search icon" width="30px" />
-        <img src={user} alt="search icon" width="32px" />
-        <img src={shopping} alt="search icon" width="32px" />
-        <button>
+      <ul className="flex gap-8 w-5/12 justify-end">
+        <button onClick={() => nav('/')}>
+          <img src={user} alt="search icon" width="32px" />
+        </button>
+        <button onClick={() => nav('/')}>
+          <img src={shopping} alt="search icon" width="32px" />
+        </button>
+        <button onClick={() => nav('/')}>
           <img src={sun} alt="search icon" width="33px" />
           {/* <img src={moon} alt="search icon" width="33px" /> */}
         </button>
+        <NavSearchBar />
       </ul>
     </div>
   );
