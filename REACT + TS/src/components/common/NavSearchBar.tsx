@@ -8,16 +8,12 @@ export default function NavSearchBar() {
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
-  const toggleInput = () => {
-    setInputVisible(!inputVisible);
-  };
-
   const onClickBtn = () => {
     if (inputVisible && inputValue.trim() !== '') {
       console.log(inputValue);
       //nav('/search');
     } else {
-      toggleInput();
+      setInputVisible(!inputVisible);
     }
   };
 
@@ -30,12 +26,12 @@ export default function NavSearchBar() {
       <input
         style={{
           borderBottom: '1px solid',
-          width: inputVisible ? '150px' : '0px', // 너비가 0px에서 150px로 변화하도록 설정
-          transition: 'width 0.3s ease', // 너비에 대한 애니메이션 트랜지션
+          width: inputVisible ? '150px' : '0px',
+          transition: 'width 0.3s ease',
         }}
         value={inputValue}
         type="text"
-        className="border-slate-500 bg-transparent mr-2 w-0 overflow-hidden" // w-0 클래스 추가
+        className="border-slate-500 bg-transparent mr-2 w-0 overflow-hidden"
         placeholder="Search..."
         onChange={onChangeInput}
       />
