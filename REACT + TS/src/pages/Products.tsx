@@ -5,8 +5,7 @@ import { productsList } from '@/components/store/products';
 import { useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { Category } from '@/components/constants/category';
-import { useState } from 'react';
-
+import { useState, Suspense, startTransition } from 'react';
 
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,21 +17,22 @@ export default function Products() {
   }
 
   const ChangeData = (category: string) => {
-    setSelectedCategory(category);
-    setSearchParams({ q: category.toLowerCase() });
+    startTransition(() => {
+      setSelectedCategory(category);
+      setSearchParams({ q: category.toLowerCase() });
+    });
   };
-
   return (
     <div>
       <Nav />
       <div className="pt-28"></div>
       <div className="flex flex-col p-20 gap-5 items-center">
-        <h2 className='text-lg font-bold tracking-wider'>CATEGORY</h2>
+        <h2 className="text-lg font-bold tracking-wider">CATEGORY</h2>
         <ul className="flex gap-5">
           {Object.entries(Category).map(([key, value]) => (
             <li
               key={value}
-              className={`cursor-pointer p-2 ${selectedCategory === value ? 'border-b-2' : ''}`}
+              className={`cursor-pointer p-2 text-md tracking-wider hover:text-gray-500 ${selectedCategory === value ? 'border-b-2' : ''}`}
               onClick={() => ChangeData(value)}
             >
               {value.toUpperCase()}
@@ -41,10 +41,12 @@ export default function Products() {
         </ul>
       </div>
       <div>
-        <div className="ml-10">
-          {list.map((product) => (
-            <ItemList key={product.id} {...product} />
-          ))}
+        <div className="ml-10 flex flex-wrap">
+          <Suspense fallback={<p>loading...</p>}>
+            {list.map((product) => (
+              <ItemList key={product.id} {...product} />
+            ))}
+          </Suspense>
         </div>
       </div>
       <Footer />

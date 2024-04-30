@@ -1,4 +1,5 @@
 import { selector } from 'recoil';
+import axios from 'axios';
 import CONSTANTS from '../constants/constants';
 
 const productsURL = `${CONSTANTS.IS_DEV ? `/proxy` : `${import.meta.env.VITE_FAKE_STORE_API}`}/products`;
@@ -25,8 +26,8 @@ export const productsList = selector<IProduct[]>({
   key: 'productsList',
   get: async () => {
     try {
-      const response = await fetch(productsURL);
-      return (await response.json()) || [];
+      const response = await axios.get(productsURL);
+      return response.data || [];
     } catch (error) {
       console.log(`Error: \n${error}`);
       return [];

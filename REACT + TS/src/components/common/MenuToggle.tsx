@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Category } from '../constants/category';
-import { Button } from '../ui/button';
 import xButton from './../../assets/xButton.svg';
 import hamburger from '../../assets/hamburger.svg';
+import rightArrow from '../../assets/rightArrow.svg';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function Toggle() {
   const [isOpened, setOpen] = useState(false);
+  const nav = useNavigate();
 
   const toggleMenu = () => {
     setOpen((isOpened) => !isOpened);
@@ -21,7 +23,7 @@ export default function Toggle() {
       <button onClick={toggleMenu}>
         <img src={hamburger} alt="hamburger button" width="40px" />
       </button>
-      <ul
+      <div
         className="menuToggle"
         style={{
           left: isOpened ? '0px' : '-450px',
@@ -31,11 +33,23 @@ export default function Toggle() {
         <button onClick={toggleMenu} className="w-14 self-end">
           <img src={xButton} alt="X Button" width="35" />
         </button>
-        <Button variant="link">{Category.all}</Button>
-        <Button variant="link">{Category.men}</Button>
-        <Button variant="link">{Category.women}</Button>
-        <Button variant="link">{Category.accessory}</Button>
-      </ul>
+        <ul className="text-start text-2xl pt-9">
+          {Object.entries(Category).map(([key, value]) => (
+            <div className="flex justify-between w-11/12 hover:text-gray-500 tracking-wider">
+              <li
+                key={value}
+                className={`cursor-pointer p-3`}
+                onClick={() => nav(`/products?q=${value}`)}
+              >
+                {value.toUpperCase()}
+              </li>
+              <button>
+                <img src={rightArrow} alt="hamburger button" width="20px" />
+              </button>
+            </div>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

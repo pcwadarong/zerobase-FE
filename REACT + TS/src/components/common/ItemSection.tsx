@@ -1,17 +1,11 @@
-import ItemList from './ItemList';
 // import { productsList } from '../store/products';
 // import { useEffect } from 'react';
-import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { isLoadingAtom } from '../store/loading';
 
 interface Props {
   title: string;
 }
 
 export default function ItemSection({ title }: Props) {
-  const isLoading = useRecoilValue(isLoadingAtom);
-  const setLoading = useSetRecoilState(isLoadingAtom);
-
   // const [products, setProducts] = useRecoilState(productsList);
 
   // useEffect(() => {
@@ -31,10 +25,6 @@ export default function ItemSection({ title }: Props) {
         <div className="col-span-full">
           <h2 className="text-xl font-extra">{title}</h2>
         </div>
-        <ItemList />
-        <ItemList />
-        <ItemList />
-        <ItemList />
       </div>
     </div>
   );
