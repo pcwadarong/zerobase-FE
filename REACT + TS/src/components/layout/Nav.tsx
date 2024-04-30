@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import NavSearchBar from '../common/NavSearchBar';
-import Toggle from '../common/MenuToggle';
+import NavSearchBar from './NavSearchBar';
+import Toggle from './MenuToggle';
 import user from '../../assets/user.svg';
 import shopping from '../../assets/shooping.svg';
 import sun from '../../assets/sun.svg';
@@ -13,8 +13,8 @@ export default function Nav() {
     <div className="flex h-28 justify-between p-7 items-center fixed z-10 drop-shadow-lg bg-white/90 w-full backdrop-blur-sm">
       <div className="flex gap-8 w-5/12 text-right items-center">
         <Toggle />
-        <button onClick={() => nav('/')} className="text-lg">BEST</button>
-        <button onClick={() => nav('/')} className="text-lg">NEW</button>
+        <button onClick={() => nav('/best')} className="text-lg">BEST</button>
+        <button onClick={() => nav('/new')} className="text-lg">NEW</button>
       </div>
       <img
         onClick={() => nav('/')}

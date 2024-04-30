@@ -25,13 +25,12 @@ export default function NavSearchBar() {
     <div className="flex relative">
       <input
         style={{
-          borderBottom: '1px solid',
           width: inputVisible ? '150px' : '0px',
           transition: 'width 0.3s ease',
         }}
         value={inputValue}
         type="text"
-        className="border-slate-500 bg-transparent mr-2 w-0 overflow-hidden"
+        className="border-slate-500 bg-transparent mr-2 w-0 overflow-hidden border-b-[1px]"
         placeholder="Search..."
         onChange={onChangeInput}
       />

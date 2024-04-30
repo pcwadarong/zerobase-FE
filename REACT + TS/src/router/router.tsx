@@ -3,14 +3,17 @@ import { memo } from 'react';
 import Error from '../pages/Error';
 import Index from '../pages/Index';
 import Products from '../pages/Products';
-import Search from '../pages/Search'
+import Search from '../pages/Search';
+import Special from '../pages/Special';
 
 const Router = () => {
   return (
     <Routes>
       <Route path="*" element={<Error />} />
       <Route path="/" element={<Index />} />
-      <Route path="/products" element={<Products />} />
+      <Route path="/products/*" element={<Products />} />
+      <Route path="/best" element={<Special index="best" />} />
+      <Route path="/new" element={<Special index="new"/>} />
       <Route path="/search" element={<Search />} />
     </Routes>
   );

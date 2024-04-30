@@ -133,3 +133,21 @@ button:disabled {
   bg-white/90 p-10 absolute z-50 top-0 h-screen
   sm:left-[1vh] backdrop-blur-sm
 }
+
+.categoryList {
+  flex-grow: 1;
+  border-color: #cbd5e0; /* border-slate-400 */
+  border-width: 1px;
+}
+
+@media (min-width: 768px) {
+  .categoryList {
+    width: 50%; /* md:w-1/2 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .categoryList {
+    width: calc(100% / 3); /* lg:w-1/3 */
+  }
+}

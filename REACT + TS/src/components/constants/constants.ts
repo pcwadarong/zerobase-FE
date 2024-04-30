@@ -1,8 +1,3 @@
-/**
- * 자주 사용하는 상수
- */
-
-
 const IS_DEV: boolean = "development" === import.meta.env.MODE; // 개발 환경 전용
 
 const KEY = {

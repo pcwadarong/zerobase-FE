@@ -2,8 +2,7 @@ import Carousel from '../components/common/Carousel/Carousel';
 import Nav from '../components/layout/Nav';
 import Footer from '@/components/layout/Footer';
 import CategoryBox from '@/components/common/ItemSection';
-import { carouselList } from '@/lib/carouselImg';
-import { Category } from '@/components/constants/category';
+import { carouselList } from '@/utils/carouselImg';
 
 const Index = (): JSX.Element => {
   return (

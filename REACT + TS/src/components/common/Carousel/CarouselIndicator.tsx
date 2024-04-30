@@ -6,7 +6,7 @@ interface Props {
 export default function Indicator({ carouselList, currIndex }: Props) {
   return (
     <div>
-      <ul className="absolute bottom-0 flex z-10 w-full justify-center items-center">
+      <ul className="absolute bottom-2 flex z-0 w-full justify-center items-center">
         {carouselList.map((_, index) => (
           <li
             style={{

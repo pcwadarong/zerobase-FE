@@ -1,9 +1,9 @@
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
 import Router from './router/router';
-import LoadingIndicator from './components/common/LoadingIndicator';
-import { isLoadingAtom } from './components/store/loading';
-//import { themeAtom } from './components/store/theme';
+import LoadingIndicator from './components/ui/LoadingIndicator';
+import { isLoadingAtom } from './types/Recoil';
+//import { themeAtom } from './types/Recoil';
 
 export default function App(): JSX.Element {
   const isLoading = useRecoilValue(isLoadingAtom);

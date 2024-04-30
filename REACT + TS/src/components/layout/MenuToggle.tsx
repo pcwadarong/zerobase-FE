@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Category } from '../constants/category';
 import xButton from './../../assets/xButton.svg';
 import hamburger from '../../assets/hamburger.svg';
 import rightArrow from '../../assets/rightArrow.svg';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Toggle() {
   const [isOpened, setOpen] = useState(false);
@@ -11,6 +11,13 @@ export default function Toggle() {
 
   const toggleMenu = () => {
     setOpen((isOpened) => !isOpened);
+  };
+
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const moveToCategory = (categoryName:string) => {
+    nav(`/products?sort=${categoryName}`);
+    setOpen(false);
   };
 
   return (
@@ -35,11 +42,14 @@ export default function Toggle() {
         </button>
         <ul className="text-start text-2xl pt-9">
           {Object.entries(Category).map(([key, value]) => (
-            <div className="flex justify-between w-11/12 hover:text-gray-500 tracking-wider">
+            <div
+              key={value}
+              ref={menuRef}
+              className="flex justify-between w-11/12 hover:text-gray-500 tracking-wider"
+            >
               <li
-                key={value}
                 className={`cursor-pointer p-3`}
-                onClick={() => nav(`/products?q=${value}`)}
+                onClick={() => moveToCategory(value)}
               >
                 {value.toUpperCase()}
               </li>
