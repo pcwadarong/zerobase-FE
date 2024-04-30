@@ -3,12 +3,13 @@
  */
 
 export const Category: { [key: string]: string } = {
-  all: 'ALL',
-  men: `MEN'S`,
-  women: `WOMEN'S`,
-  electronics: 'ELECTRONICS',
-  accessory: 'ACCESSORY',
+  "default": "all",
+  "men's clothing": "men",
+  "women's clothing": "women",
+  electronics: "digital",
+  jewelery: "accessory",
 } as const;
+
 
 export const MENUS = {
   HOME: '홈',

@@ -1,24 +1,23 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import { Suspense } from 'react';
+import { IProduct } from '../store/products';
 
-export default function ItemList() {
-  const isLoading = true;
-  
+interface Props extends IProduct {}
+
+export default function ItemList({ id }: Props) {
   return (
-    <Suspense fallback={<SkeletonLoading />}>
-      <div className="flex flex-col gap-3 justify-center">
-        
-      </div>
-    </Suspense>
+    <div className="flex flex-col gap-3 justify-center">
+      <Suspense fallback={<SkeletonLoading />}>{id}</Suspense>
+    </div>
   );
 }
 
 function SkeletonLoading() {
   return (
-    <div className="flex flex-col gap-3 justify-center">
+    <>
       <Skeleton className="h-96" />
       <Skeleton className="h-6" />
       <Skeleton className="h-6 w-1/2" />
-    </div>
+    </>
   );
 }

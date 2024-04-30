@@ -1,28 +1,19 @@
-import { atom, useSetRecoilState, useRecoilValue } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
 import Router from './router/router';
-import BarLoader from 'react-spinners/BarLoader';
-
-const isLoadingAtom = atom({
-  key: 'isLoadingAtom',
-  default: true,
-});
+import LoadingIndicator from './components/common/LoadingIndicator';
+import { isLoadingAtom } from './components/store/loading';
+//import { themeAtom } from './components/store/theme';
 
 export default function App(): JSX.Element {
   const isLoading = useRecoilValue(isLoadingAtom);
   const setLoading = useSetRecoilState(isLoadingAtom);
+  //const isLight = useRecoilValue(themeAtom);
 
   useEffect(() => {
     const setLoadingComplete = () => setLoading(false);
     setLoadingComplete();
-    //setLoading(true);
   }, [setLoading]);
 
-  return isLoading ? (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <BarLoader color="#282828" />
-    </div>
-  ) : (
-    <Router />
-  );
+  return isLoading ? <LoadingIndicator /> : <Router />;
 }
