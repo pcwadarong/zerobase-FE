@@ -1,9 +1,9 @@
 export const Category: { [key: string]: string } = {
-  "default": "all",
-  "men's clothing": "men",
-  "women's clothing": "women",
-  electronics: "digital",
-  jewelery: "accessory",
+  "all" : "default",
+  "men" : "men's clothing",
+  "women": "women's clothing",
+  "digital" :  'electronics',
+  "accessory" : 'jewelery',
 } as const;
 
 export const CART_ITEM = 'CART_ITEM';

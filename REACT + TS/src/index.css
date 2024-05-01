@@ -85,6 +85,10 @@
   src: url('/Pretendard-Light.otf');
 }
 
+.font-extra {
+  font-family: 'pretendard-Ex';
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -124,14 +128,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.font-extra {
-  font-family: 'pretendard-Ex';
-}
-
 .menuToggle {
   @apply flex flex-col w-96 gap-5
   bg-white/90 p-10 absolute z-50 top-0 h-screen
-  sm:left-[1vh] backdrop-blur-sm
+  sm:left-[1vh] backdrop-blur-sm;
 }
 
 .categoryList {
@@ -140,14 +140,6 @@ button:disabled {
   border-width: 1px;
 }
 
-@media (min-width: 768px) {
-  .categoryList {
-    width: 50%; /* md:w-1/2 */
-  }
-}
-
-@media (min-width: 1024px) {
-  .categoryList {
-    width: calc(100% / 3); /* lg:w-1/3 */
-  }
+.dark {
+  @apply bg-gray-900 text-white fill-white;
 }

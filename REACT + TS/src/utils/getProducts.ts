@@ -2,9 +2,9 @@ import { selector } from 'recoil';
 import axios from 'axios';
 import CONSTANTS from '../components/constants/constants';
 import { IProduct } from '@/types/globalTypes';
+import { isLoadingState } from '@/types/Recoil';
 
 const productsURL = `${CONSTANTS.IS_DEV ? `/proxy` : `${import.meta.env.VITE_FAKE_STORE_API}`}/products`;
-// const productsURL = `https://fakestoreapi.com/products`;
 
 export function getCateProductUrl(category: string) {
   switch (category) {
@@ -33,5 +33,13 @@ export const getProductsList = selector<IProduct[]>({
       console.log(`Error: \n${error}`);
       return [];
     }
+  },
+});
+
+export const productsLoadingSelector = selector({
+  key: 'productsLoadingSelector',
+  get: ({ get }) => {
+    const loading = get(isLoadingState);
+    return loading;
   },
 });

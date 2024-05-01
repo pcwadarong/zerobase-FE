@@ -8,13 +8,13 @@ interface Props {
 export default function CategoryList({ selectedCategory, onChange }: Props) {
   return (
     <ul className="flex gap-5">
-      {Object.entries(Category).map(([key, value]) => (
+      {Object.entries(Category).map(([key]) => (
         <li
-          key={value}
-          className={`text-gray-500 cursor-pointer p-2 text-md tracking-wider hover:text-black ${selectedCategory === value ? 'border-b-[1px] border-slate-500 text-black' : ''}`}
-          onClick={() => onChange(value)}
+          key={key}
+          className={`text-gray-500 cursor-pointer p-2 text-md tracking-wider hover:text-black ${selectedCategory === key ? 'border-b-[1px] border-slate-500 text-black' : ''}`}
+          onClick={() => onChange(key)}
         >
-          {value.toUpperCase()}
+          {key.toUpperCase()}
         </li>
       ))}
     </ul>

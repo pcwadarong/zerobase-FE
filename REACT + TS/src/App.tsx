@@ -1,19 +1,25 @@
-import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
 import Router from './router/router';
 import LoadingIndicator from './components/ui/LoadingIndicator';
-import { isLoadingAtom } from './types/Recoil';
-//import { themeAtom } from './types/Recoil';
+import { useRecoilState } from 'recoil';
+import { isLoadingAtom, themeState } from './types/Recoil';
 
 export default function App(): JSX.Element {
-  const isLoading = useRecoilValue(isLoadingAtom);
-  const setLoading = useSetRecoilState(isLoadingAtom);
-  //const isLight = useRecoilValue(themeAtom);
+  const [isLoading, setLoading] = useRecoilState(isLoadingAtom);
+  const [theme, setTheme] = useRecoilState(themeState);
 
   useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) setTheme(storedTheme);
+    else setTheme('light');
+
     const setLoadingComplete = () => setLoading(false);
     setLoadingComplete();
-  }, [setLoading]);
+  }, [setLoading, setTheme]);
 
-  return isLoading ? <LoadingIndicator /> : <Router />;
+  return (
+    <div className={theme === 'dark' ? 'dark' : ''}>
+      {isLoading ? <LoadingIndicator /> : <Router />}
+    </div>
+  );
 }

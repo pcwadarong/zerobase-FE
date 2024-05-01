@@ -1,20 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 import NavSearchBar from './NavSearchBar';
+import ThemeToggle from '../common/ThemeToggle';
 import Toggle from './MenuToggle';
-import user from '../../assets/user.svg';
-import shopping from '../../assets/shooping.svg';
-import sun from '../../assets/sun.svg';
-// import moon from '../../assets/moon.svg';
+import User from '../../assets/user.svg';
+import Shopping from '../../assets/shooping.svg';
 
 export default function Nav() {
   const nav = useNavigate();
 
   return (
-    <div className="flex h-28 justify-between p-7 items-center fixed z-10 drop-shadow-lg bg-white/90 w-full backdrop-blur-sm">
-      <div className="flex gap-8 w-5/12 text-right items-center">
+    <div className="flex h-28 justify-between p-7 items-center text-md fixed z-10 drop-shadow-lg bg-white/90 w-full backdrop-blur-sm dark:bg-gray-900/90">
+      <div className="flex gap-4 w-5/12 text-right items-center xl:gap-8">
         <Toggle />
-        <button onClick={() => nav('/best')} className="text-lg">BEST</button>
-        <button onClick={() => nav('/new')} className="text-lg">NEW</button>
+        <button onClick={() => nav('/best')}>BEST</button>
+        <button onClick={() => nav('/new')}>NEW</button>
       </div>
       <img
         onClick={() => nav('/')}
@@ -23,17 +22,16 @@ export default function Nav() {
         width="40px"
         className="cursor-pointer"
       />
-      <ul className="flex gap-8 w-5/12 justify-end">
-        <button onClick={() => nav('/')}>
-          <img src={user} alt="search icon" width="32px" />
+      <ul className="flex gap-4 w-5/12 justify-end xl:gap-8">
+        <button onClick={() => nav('/')} className="flex items-center gap-1">
+          <User />
+          <span className="hidden xl:block">USER</span>
         </button>
-        <button onClick={() => nav('/')}>
-          <img src={shopping} alt="search icon" width="32px" />
+        <button onClick={() => nav('/')} className="flex items-center gap-1">
+          <Shopping /> 
+          <span className="hidden xl:block">CART</span>
         </button>
-        <button onClick={() => nav('/')}>
-          <img src={sun} alt="search icon" width="33px" />
-          {/* <img src={moon} alt="search icon" width="33px" /> */}
-        </button>
+        <ThemeToggle />
         <NavSearchBar />
       </ul>
     </div>

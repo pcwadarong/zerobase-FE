@@ -7,7 +7,7 @@ import { IProduct } from '@/types/globalTypes';
 import SortingSelect from '../common/sorting';
 
 interface SpecialListingProps {
-  index: string; // Props의 타입을 정확히 지정
+  index: string;
 }
 
 export default function SpecialListing({ index }: SpecialListingProps) {

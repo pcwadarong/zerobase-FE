@@ -1,6 +1,6 @@
-import searchImg from '../../assets/search.svg';
-import xButton from '../../assets/xButton.svg';
-import { useState } from 'react';
+import SearchImg from '../../assets/search.svg';
+import XButton from '../../assets/xButton.svg';
+import { useState, KeyboardEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function NavSearchBar() {
@@ -8,12 +8,9 @@ export default function NavSearchBar() {
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
-  const onClickBtn = () => {
-    if (inputVisible && inputValue.trim() !== '') {
-      console.log(inputValue);
-      //nav('/search');
-    } else {
-      setInputVisible(!inputVisible);
+  const onKeydown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === 'Enter' && inputValue.trim() !== '') {
+      nav('/search');
     }
   };
 
@@ -24,7 +21,7 @@ export default function NavSearchBar() {
   return (
     <div className="flex relative">
       <input
-        style={{
+        style={{ 
           width: inputVisible ? '150px' : '0px',
           transition: 'width 0.3s ease',
         }}
@@ -33,19 +30,21 @@ export default function NavSearchBar() {
         className="border-slate-500 bg-transparent mr-2 w-0 overflow-hidden border-b-[1px]"
         placeholder="Search..."
         onChange={onChangeInput}
+        onKeyDown={onKeydown}
       />
 
-      <button onClick={onClickBtn}>
-        <img
+      <button onClick={() => setInputVisible(!inputVisible)}>
+        {inputVisible ? <XButton /> : <SearchImg/>}
+        {/* <img
           src={inputVisible ? xButton : searchImg}
           alt={inputVisible ? 'close icon' : 'search icon'}
-          width="30px"
+          width="25px"
           className={
             inputVisible
               ? 'transition-all duration-300 transform rotate-90'
               : ''
           }
-        />
+        /> */}
       </button>
     </div>
   );
