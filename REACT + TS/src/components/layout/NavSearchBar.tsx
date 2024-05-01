@@ -21,7 +21,7 @@ export default function NavSearchBar() {
   return (
     <div className="flex relative">
       <input
-        style={{ 
+        style={{
           width: inputVisible ? '150px' : '0px',
           transition: 'width 0.3s ease',
         }}
@@ -33,17 +33,22 @@ export default function NavSearchBar() {
         onKeyDown={onKeydown}
       />
 
-      <button onClick={() => setInputVisible(!inputVisible)}>
-        {inputVisible ? <XButton /> : <SearchImg/>}
-        {/* <img
-          src={inputVisible ? xButton : searchImg}
-          alt={inputVisible ? 'close icon' : 'search icon'}
-          width="25px"
+      <button className="w-7" onClick={() => setInputVisible(!inputVisible)}>
+        <div
           className={
             inputVisible
               ? 'transition-all duration-300 transform rotate-90'
               : ''
           }
+        >
+          {inputVisible ? <XButton /> : <SearchImg />}
+        </div>
+
+        {/* <img
+          src={inputVisible ? xButton : searchImg}
+          alt={inputVisible ? 'close icon' : 'search icon'}
+          width="25px"
+          
         /> */}
       </button>
     </div>

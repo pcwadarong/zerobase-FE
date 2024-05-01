@@ -24,11 +24,11 @@ export default function Nav() {
       />
       <ul className="flex gap-4 w-5/12 justify-end xl:gap-8">
         <button onClick={() => nav('/')} className="flex items-center gap-1">
-          <User />
+          <div  className='w-7'><User /></div>
           <span className="hidden xl:block">USER</span>
         </button>
         <button onClick={() => nav('/')} className="flex items-center gap-1">
-          <Shopping /> 
+          <div className='w-7'><Shopping /></div>
           <span className="hidden xl:block">CART</span>
         </button>
         <ThemeToggle />

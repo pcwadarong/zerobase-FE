@@ -14,7 +14,7 @@ export default function ThemeToggle() {
 
   return (
     <button onClick={toggleTheme} className="flex items-center gap-1">
-      {theme === 'light' ? <Sun /> : <Moon />}
+      <div  className='w-8'>{theme === 'light' ? <Sun /> : <Moon />}</div>
       <span className="hidden xl:block">THEME</span>
     </button>
   );
