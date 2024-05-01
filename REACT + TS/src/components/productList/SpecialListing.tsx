@@ -1,6 +1,6 @@
+import ItemList from './ListItem';
 import { getProductsList } from '@/utils/getProducts';
 import { useRecoilValue } from 'recoil';
-import ItemList from './ListItem';
 import LoadingIndicator from '@/components/ui/LoadingIndicator';
 import { useState, useEffect, Suspense, useCallback } from 'react';
 import { IProduct } from '@/types/globalTypes';

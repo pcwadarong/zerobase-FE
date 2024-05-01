@@ -21,8 +21,8 @@ export default function SkeletonUi() {
   const safeItemsCount = Math.max(itemsCount, 1);
 
   const skeletonItems = new Array(safeItemsCount).fill(null).map((_, index) => (
-    <div key={index} className="flex flex-col gap-3 shrink md:w-1/2 lg:w-1/3">
-      <Skeleton className="h-96" />
+    <div key={index} className="flex flex-col gap-3 shrink w-full">
+      <Skeleton className="h-80" />
       <Skeleton className="h-6" />
       <Skeleton className="h-6 w-1/2" />
     </div>
