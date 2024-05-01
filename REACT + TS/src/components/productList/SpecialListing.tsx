@@ -1,9 +1,12 @@
 import ItemList from './ListItem';
+import SkeletonUi from './SkeletonUi';
+
+import { useState, useEffect, useCallback } from 'react';
+import { useRecoilValueLoadable, useRecoilState } from 'recoil';
+
 import { getProductsList } from '@/utils/getProducts';
-import { useRecoilValue } from 'recoil';
-import LoadingIndicator from '@/components/ui/LoadingIndicator';
-import { useState, useEffect, Suspense, useCallback } from 'react';
 import { IProduct } from '@/types/globalTypes';
+import { isLoadingState } from '@/types/Recoil';
 import SortingSelect from '../common/sorting';
 
 interface SpecialListingProps {
@@ -11,44 +14,58 @@ interface SpecialListingProps {
 }
 
 export default function SpecialListing({ index }: SpecialListingProps) {
-  const productList = useRecoilValue(getProductsList);
-  const [filteredList, setFilteredList] = useState<IProduct[]>([]);
+  const [data, setData] = useState<IProduct[]>([]);
+  const [isLoading, setLoading] = useRecoilState(isLoadingState);
+  const productsListLoadable = useRecoilValueLoadable(getProductsList);
+  const [total, setTotal] = useState(0);
 
   const filterProducts = useCallback(
     (index: string) => {
-      if (index === 'new') {
-        return productList.filter((item) => item.id >= 10);
-      } else {
-        return productList.filter(
-          (item) => item.rating.rate && item.rating.rate >= 3.5,
-        );
+      if (productsListLoadable.state === 'hasValue') {
+        if (index === 'new') {
+          return productsListLoadable.contents.filter((item) => item.id >= 10);
+        } else {
+          return productsListLoadable.contents.filter(
+            (item) => item.rating.rate && item.rating.rate >= 4.0,
+          );
+        }
       }
+      return [];
     },
-    [productList],
+    [productsListLoadable],
   );
 
   useEffect(() => {
-    setFilteredList(filterProducts(index));
-  }, [filterProducts, index]);
-
-  const total = filteredList.length;
+    if (productsListLoadable.state === 'hasValue') {
+      const filteredData = filterProducts(index);
+      setData(filteredData);
+      setTotal(filteredData.length);
+      setLoading(false);
+    } else if (productsListLoadable.state === 'loading') {
+      setLoading(true);
+    }
+  }, [productsListLoadable, setLoading, filterProducts, index]);
 
   return (
-    <Suspense fallback={<LoadingIndicator />}>
-      <div className='flex justify-between items-center px-4 pb-2'>
-        {`Total: ${total} items`}
+    <div>
+      <div className="flex justify-between items-center px-4 pb-2">
+        {isLoading ? `Counting..` : `Total: ${total} items`}
         <SortingSelect />
-        </div>
-      <div className="flex flex-wrap space-around overflow-hidden">
-        {filteredList.map((product) => (
-          <div
-            key={product.id}
-            className={`flex flex-col grow border-slate-400 border-[1px] items-center md:w-1/2 lg:w-1/3  p-12`}
-          >
-            <ItemList {...product} />
-          </div>
-        ))}
       </div>
-    </Suspense>
+      {isLoading ? (
+        <SkeletonUi />
+      ) : (
+        <div className="flex flex-wrap space-around overflow-hidden">
+          {data.map((product) => (
+            <div
+              key={product.id}
+              className={`flex flex-col grow border-slate-400 border-[1px] items-center md:w-1/2 lg:w-1/3  p-12`}
+            >
+              <ItemList {...product} />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

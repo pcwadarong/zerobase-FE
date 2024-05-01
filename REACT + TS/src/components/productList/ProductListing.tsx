@@ -14,7 +14,7 @@ import { isLoadingState } from '@/types/Recoil';
 export default function ProductListing() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [data, setData] = useState<IProduct[] | null>(null);
+  const [data, setData] = useState<IProduct[]>([]);
   const [filteredList, setFilteredList] = useState<IProduct[]>([]);
   const [isLoading, setLoading] = useRecoilState(isLoadingState);
   const productsListLoadable = useRecoilValueLoadable(getProductsList);
@@ -31,7 +31,7 @@ export default function ProductListing() {
   const filterProducts = useCallback(
     (category: string) => {
       if (productsListLoadable.state === 'hasValue') {
-        const filteredData = productsListLoadable.contents.filter((item) => {
+        const filteredData = data.filter((item) => {
           const filter = getCateProductUrl(category.toLowerCase());
           return filter === 'default' || item.category === filter;
         });
@@ -39,7 +39,7 @@ export default function ProductListing() {
         setSearchParams({ sort: category });
       }
     },
-    [productsListLoadable, setSearchParams],
+    [productsListLoadable, data, setSearchParams],
   );
 
   useEffect(() => {
