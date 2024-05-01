@@ -10,6 +10,7 @@ import { getProductsList } from '@/utils/getProducts';
 import { getCateProductUrl } from '@/utils/getProducts';
 import { IProduct } from '@/types/globalTypes';
 import { isLoadingState } from '@/types/Recoil';
+import SortingSelect from '../common/sorting';
 
 export default function ProductListing() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,6 +19,7 @@ export default function ProductListing() {
   const [filteredList, setFilteredList] = useState<IProduct[]>([]);
   const [isLoading, setLoading] = useRecoilState(isLoadingState);
   const productsListLoadable = useRecoilValueLoadable(getProductsList);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     if (productsListLoadable.state === 'hasValue') {
@@ -37,6 +39,7 @@ export default function ProductListing() {
         });
         setFilteredList(filteredData);
         setSearchParams({ sort: category });
+        setTotal(filteredData.length);
       }
     },
     [productsListLoadable, data, setSearchParams],
@@ -61,6 +64,10 @@ export default function ProductListing() {
           selectedCategory={selectedCategory}
           onChange={handleChangeCategory}
         />
+      </div>
+      <div className="flex justify-between items-center px-4 pb-2">
+        {isLoading ? `Counting..` : `Total: ${total} items`}
+        <SortingSelect />
       </div>
       {isLoading ? (
         <SkeletonUi />

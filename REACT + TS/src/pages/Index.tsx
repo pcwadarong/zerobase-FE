@@ -1,20 +1,20 @@
 import Carousel from '../components/common/Carousel/Carousel';
 import Nav from '../components/layout/Nav';
 import Footer from '@/components/layout/Footer';
-import CategoryBox from '@/components/common/ItemSection';
+import IndexItems from '@/components/common/IndexItems';
 import { carouselList } from '@/utils/carouselImg';
 
 const Index = (): JSX.Element => {
   return (
     <>
-      <section className="overflow-hidden">
+      <section>
         <Nav />
         <div className="pt-28"></div>
         <Carousel carouselList={carouselList} />
       </section>
-      <section>
-        <CategoryBox title={`Today's Best`} />
-        <CategoryBox title={`Best Sellers`} />
+      <section className='py-20 flex flex-col items-center'>
+        <IndexItems title={`Today's Best`} />
+        <IndexItems title={`New In`} />
       </section>
       <Footer />
     </>

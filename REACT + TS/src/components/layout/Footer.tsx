@@ -1,11 +1,14 @@
 import { Separator } from '../ui/separator';
+import Logo from '../../assets/logo.svg';
 
 export default function Footer() {
   return (
     <div className="pb-10 font-light flex gap-7 flex-col items-center tracking-wider text-slate-500">
       <Separator />
-      <img src="/logo.png" alt="logo" width="60px" className="my-5 mb-3" />
-      <ul className="flex gap-8">
+      <div className="w-16 my-5 mb-3 fill-gray-500">
+        <Logo />
+      </div>
+      <ul className="flex gap-8 whitespace-nowrap">
         <li className="cursor-pointer">CONTACT US</li>
         <li className="cursor-pointer">SERVICES</li>
         <li className="cursor-pointer">REFUND</li>

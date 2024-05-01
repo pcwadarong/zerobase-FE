@@ -74,7 +74,7 @@ export default function Carousel({ carouselList }: Props) {
     <div className="w-full relative bg-slate-200" style={{ height: '37.5rem' }}>
       <ul
         ref={carouselRef}
-        className="flex h-full justify-center items-end"
+        className="flex h-full justify-center items-end -z-50"
         style={{
           width: `${carouselList.length * 100}%`,
         }}
