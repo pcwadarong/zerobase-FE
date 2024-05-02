@@ -14,3 +14,8 @@ export const isLoadingState = atom({
   key: 'isLoadingData',
   default: true, // 초기 로딩 상태는 true로 설정
 });
+
+export const searchState = atom({
+  key: 'searchedData',
+  default: '',
+});

@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useRecoilValueLoadable } from 'recoil';
+import { useRecoilValue, useRecoilValueLoadable } from 'recoil';
 import { getProductsList } from '@/utils/getProducts';
 import ItemList from '../productList/ListItem';
 import SkeletonUi from '../productList/SkeletonUi';
 import { IProduct } from '@/types/globalTypes';
 import SearchImg from '../../assets/search.svg';
 import { Input } from '@/components/ui/input';
+import { searchState } from '@/types/Recoil';
 
 const AllProducts = () => {
   const [data, setData] = useState<IProduct[]>([]);
   const productsListLoadable = useRecoilValueLoadable(getProductsList);
-  const [search, setSearch] = useState('');
+  const initialSearchValue = useRecoilValue(searchState);
+  const [search, setSearch] = useState(initialSearchValue);
 
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -32,11 +34,18 @@ const AllProducts = () => {
     }
   }, [productsListLoadable]);
 
+  useEffect(() => {
+    setSearch(initialSearchValue);
+  }, [initialSearchValue]);
+
   const searchedItems = getFilteredData();
 
   return (
     <div>
-      <div className="max-w-sm md:max-w-xl flex items-center relative" style={{ margin: '80px auto' }}>
+      <div
+        className="max-w-sm md:max-w-xl flex items-center relative"
+        style={{ margin: '80px auto' }}
+      >
         <div className="w-7 absolute left-3 fill-gray-500 dark:fill-white">
           <SearchImg />
         </div>
@@ -44,6 +53,7 @@ const AllProducts = () => {
           type="text"
           placeholder="Search Products..."
           onChange={onChangeSearch}
+          value={search}
           className="pl-12 dark:border-2 dark:border-white"
         />
       </div>

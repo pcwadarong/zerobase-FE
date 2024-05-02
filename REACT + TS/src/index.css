@@ -131,7 +131,7 @@ button:disabled {
 .menuToggle {
   @apply flex flex-col w-96 gap-5
   bg-white/90 p-10 absolute z-50 top-0 h-screen
-  sm:left-[1vh] backdrop-blur-sm;
+  sm:left-[1vh] backdrop-blur-sm dark:bg-gray-900;
 }
 
 .categoryList {

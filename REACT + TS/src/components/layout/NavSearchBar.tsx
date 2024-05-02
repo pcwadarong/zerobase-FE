@@ -2,14 +2,20 @@ import SearchImg from '../../assets/search.svg';
 import XButton from '../../assets/xButton.svg';
 import { useState, KeyboardEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { searchState } from '@/types/Recoil';
 
 export default function NavSearchBar() {
   const nav = useNavigate();
+  const setSearch = useSetRecoilState(searchState);
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
   const onKeydown: KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'Enter' && inputValue.trim() !== '') {
+      setSearch(inputValue.trim());
+      setInputValue('');
+      setInputVisible(false); 
       nav('/search');
     }
   };
