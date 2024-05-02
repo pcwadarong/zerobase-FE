@@ -1,13 +1,17 @@
 import Nav from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
-import ProductListing from '@/components/productList/ProductListing';
+import LoadProducts from '@/components/productList/LoadProducts';
 
-export default function Products() {
+interface ListingType {
+  index: string;
+}
+
+export default function Products({ index }: ListingType) {
   return (
     <div>
       <Nav />
       <div className="pt-28"></div>
-      <ProductListing />
+      <LoadProducts index={index} />
       <Footer />
     </div>
   );

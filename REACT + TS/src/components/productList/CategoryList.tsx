@@ -11,7 +11,7 @@ export default function CategoryList({ selectedCategory, onChange }: Props) {
       {Object.entries(Category).map(([key]) => (
         <li
           key={key}
-          className={`text-gray-500 cursor-pointer p-2 text-md tracking-wider hover:text-black ${selectedCategory === key ? 'border-b-[1px] border-slate-500 text-black' : ''}`}
+          className={`text-gray-500 cursor-pointer p-2 text-md tracking-wider hover:text-black dark:text-white ${selectedCategory === key ? 'border-b-[1px] border-slate-500 text-black' : ''}`}
           onClick={() => onChange(key)}
         >
           {key.toUpperCase()}
