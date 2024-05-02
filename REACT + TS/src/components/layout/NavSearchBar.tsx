@@ -43,13 +43,6 @@ export default function NavSearchBar() {
         >
           {inputVisible ? <XButton /> : <SearchImg />}
         </div>
-
-        {/* <img
-          src={inputVisible ? xButton : searchImg}
-          alt={inputVisible ? 'close icon' : 'search icon'}
-          width="25px"
-          
-        /> */}
       </button>
     </div>
   );

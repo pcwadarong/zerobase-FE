@@ -20,17 +20,21 @@ export default function IndexItems({ title }: IndexSort) {
   const filterProducts = useCallback(
     (title: string) => {
       if (productsListLoadable.state === 'hasValue') {
+        let filteredData = [];
         if (title === `New In`) {
-          return productsListLoadable.contents.filter((item) => item.id > 16);
+          filteredData = productsListLoadable.contents
+            .filter((item) => item.id > 16)
+            .slice(-4); // 뒤에서부터 4개만 선택
         } else {
-          return productsListLoadable.contents.filter(
-            (item) => item.rating.rate && item.rating.rate >= 4.7,
-          );
+          filteredData = productsListLoadable.contents
+            .filter((item) => item.rating.rate && item.rating.rate >= 4.6)
+            .slice(-4); // 뒤에서부터 4개만 선택
         }
+        return filteredData;
       }
       return [];
     },
-    [productsListLoadable],
+    [productsListLoadable]
   );
 
   useEffect(() => {
