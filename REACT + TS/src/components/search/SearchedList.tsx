@@ -14,7 +14,7 @@ const AllProducts = () => {
   const initialSearchValue = useRecoilValue(searchState);
   const [search, setSearch] = useState(initialSearchValue);
 
-  const onChangeSearch = (e) => {
+  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
