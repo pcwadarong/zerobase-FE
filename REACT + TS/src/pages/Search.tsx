@@ -3,9 +3,9 @@ import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
+import SearchedList from '../components/search/SearchedList';
 
 export default function Search() {
-
   return (
     <div>
       <Nav />
@@ -14,6 +14,7 @@ export default function Search() {
         <Input type="text" placeholder="Search Products..." />
         <Button type="submit">Search</Button>
       </div>
+      <SearchedList />
       <Separator />
       <Footer />
     </div>

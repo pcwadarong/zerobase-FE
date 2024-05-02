@@ -10,7 +10,6 @@ import { getProductsList } from '@/utils/getProducts';
 import { getCateProductUrl } from '@/utils/getProducts';
 import { IProduct } from '@/types/globalTypes';
 import { isLoadingState } from '@/types/Recoil';
-import SortingSelect from '../common/sorting';
 
 export default function ProductListing() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -67,7 +66,6 @@ export default function ProductListing() {
       </div>
       <div className="flex justify-between items-center px-4 pb-2">
         {isLoading ? `Counting..` : `Total: ${total} items`}
-        <SortingSelect />
       </div>
       {isLoading ? (
         <SkeletonUi />

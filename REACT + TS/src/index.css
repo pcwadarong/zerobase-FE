@@ -140,6 +140,20 @@ button:disabled {
   border-width: 1px;
 }
 
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 200px;
+}
+
 .dark {
   @apply bg-gray-900 text-white fill-white;
 }

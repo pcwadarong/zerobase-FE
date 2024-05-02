@@ -1,11 +1,10 @@
 import { IProduct } from '@/types/globalTypes';
-
 interface Props extends IProduct {}
 
 export default function ItemList({ title, price, image }: Props) {
   return (
-    <div className="flex flex-col justify-between h-full">
-      <a href="#" className="flex justify-center">
+    <div onClick={()=>{nav('/')}} className="flex flex-col justify-between h-full">
+      <a href="#" className="flex justify-center h-full">
         <img
           src={`${image}`}
           alt="product image"
