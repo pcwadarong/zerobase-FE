@@ -11,11 +11,11 @@ export default function App(): JSX.Element {
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme) setTheme(storedTheme);
-    else setTheme('light');
+    else setTheme(theme);
 
     const setLoadingComplete = () => setLoading(false);
     setLoadingComplete();
-  }, [setLoading, setTheme]);
+  }, [setLoading, setTheme, theme]);
 
   return (
     <div className={theme === 'dark' ? 'dark' : ''}>

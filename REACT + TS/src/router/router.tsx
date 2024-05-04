@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import { memo } from 'react';
 import Error from '../pages/Error';
 import Index from '../pages/Index';
 import Products from '../pages/Products';
 import Search from '../pages/Search';
-import User from '@/pages/User';
+import Account from '@/pages/Account';
+import Member from '@/pages/Member';
 import Detail from '@/pages/Detail';
 
 const Router = () => {
@@ -17,9 +17,10 @@ const Router = () => {
       <Route path="/new" element={<Products index="new" />} />
       <Route path="/search" element={<Search />} />
       <Route path="/products/detail/:id" element={<Detail />} />
-      <Route path="/user/:location" element={<User />} />
+      <Route path="/member/:action" element={<Account />} />
+      <Route path="/member/info" element={<Member />} />
     </Routes>
   );
 };
 
-export default memo(Router);
+export default Router;

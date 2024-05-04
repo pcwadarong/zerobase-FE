@@ -12,10 +12,24 @@ export const themeState = atom({
 
 export const isLoadingState = atom({
   key: 'isLoadingData',
-  default: true, // 초기 로딩 상태는 true로 설정
+  default: true,
 });
 
 export const searchState = atom({
   key: 'searchedData',
   default: '',
+});
+
+export const isLoginState = atom({
+  key: 'isLoginData',
+  default: false,
+});
+
+export const userAccount = atom({
+  key: 'userAccount',
+  default: {
+    'userID': '',
+    'password': '',
+    'email': '',
+  },
 });
