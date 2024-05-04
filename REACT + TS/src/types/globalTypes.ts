@@ -12,3 +12,8 @@ export interface IProduct {
   readonly image: string;
   readonly rating: IRating;
 }
+
+export interface FormProps {
+  handleUserIDChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlePasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}

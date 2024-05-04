@@ -1,17 +1,18 @@
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { userIDState, passwordState, emailState } from '@/types/Recoil';
+import { FormProps } from '@/types/globalTypes';
 
-export default function RegisterForm({
-  handleUserIDChange,
-  handlePasswordChange,
-}) {
-    
-  const [email, setEmail] = useState('');
+export default function RegisterForm(props: FormProps) {
+  const { handleUserIDChange, handlePasswordChange } = props;
+  const [userID, setUserID] = useRecoilState(userIDState);
+  const [password, setPassword] = useRecoilState(passwordState);
+  const [email, setEmail] = useRecoilState(emailState);
   const nav = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!email || !userID || !password) {

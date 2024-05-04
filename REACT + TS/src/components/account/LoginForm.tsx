@@ -1,11 +1,18 @@
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { isLoginState, userIDState, passwordState } from '@/types/Recoil';
+import { FormProps } from '@/types/globalTypes';
 
-export default function LoginForm({
-  handleUserIDChange,
-  handlePasswordChange,
-  handleSubmit,
-}) {
+export default function LoginForm(props: FormProps) {
+  const { handleUserIDChange, handlePasswordChange } = props;
+  const userID = useRecoilValue(userIDState);
+  const password = useRecoilValue(passwordState);
+  const userInfo = localStorage.getItem('account');
+  const setIsLogin = useSetRecoilState(isLoginState);
+  const nav = useNavigate();
+
   const confirmAccount = () => {
     if (!userID || !password) {
       alert('Please enter both ID and password.');
@@ -42,7 +49,7 @@ export default function LoginForm({
         required
         placeholder="Password"
       />
-      <Button className="w-full" onClick={handleSubmit}>
+      <Button className="w-full" onClick={confirmAccount}>
         SUBMIT
       </Button>
     </form>
