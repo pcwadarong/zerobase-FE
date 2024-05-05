@@ -11,7 +11,7 @@ export default function ListItem({ title, price, image, id }: Props) {
       }}
       className="flex flex-col justify-between h-full"
     >
-      <a href="#" className="flex justify-center h-full">
+      <a href="#" className="flex justify-center items-center h-full bg-white">
         <img
           src={`${image}`}
           alt="product image"

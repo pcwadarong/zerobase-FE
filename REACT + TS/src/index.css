@@ -75,18 +75,28 @@
   }
 }
 
-@font-face {
-  font-family: 'pretendard-Ex';
-  src: url('/Pretendard-Extrabold.otf');
-}
 
 @font-face {
   font-family: 'pretendard-li';
   src: url('/Pretendard-Light.otf');
 }
 
+@font-face {
+  font-family: 'pretendard-re';
+  src: url('/Pretendard-Regular.otf');
+}
+
+@font-face {
+  font-family: 'pretendard-Ex';
+  src: url('/Pretendard-Extrabold.otf');
+}
+
 .font-extra {
   font-family: 'pretendard-Ex';
+}
+
+.font-regular {
+  font-family: 'pretendard-Re';
 }
 
 * {

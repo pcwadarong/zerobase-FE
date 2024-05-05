@@ -75,7 +75,7 @@ export default function ProductsByCategory({ data, setData }: Props) {
           {categoryList.map((product) => (
             <div
               key={product.id}
-              className={`flex flex-col grow border-slate-400 border-[1px] items-center md:w-1/2 lg:w-1/3  p-12`}
+              className={`flex flex-col grow border-slate-400 border-[1px] h-[30rem] items-center md:w-1/2 lg:w-1/3 p-12`}
             >
               <ListItem {...product} />
             </div>

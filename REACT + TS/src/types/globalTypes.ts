@@ -17,3 +17,20 @@ export interface FormProps {
   handleUserIDChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlePasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+export interface ICartInfo {
+  readonly id: number;
+  readonly count: number;
+}
+
+export interface ICartItems {
+  readonly id: string;
+  readonly title: string;
+  readonly price: number;
+  readonly count: number;
+  readonly image: string;
+}
+
+export interface ICartState {
+  readonly items?: Record<string | number, ICartInfo>;
+}
