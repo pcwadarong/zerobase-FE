@@ -12,7 +12,7 @@ const Index = (): JSX.Element => {
         <div className="pt-28"></div>
         <Carousel carouselList={carouselList} />
       </section>
-      <section className='py-20 flex flex-col items-center'>
+      <section className="py-20 flex flex-col items-center">
         <IndexItems title={`Today's Best`} />
         <IndexItems title={`New In`} />
       </section>

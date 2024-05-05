@@ -1,4 +1,4 @@
-import ItemList from '../productList/ListItem';
+import ListItem from '../productList/ListItem';
 import SkeletonUi from '../productList/SkeletonUi';
 
 import { useState, useEffect, useCallback } from 'react';
@@ -34,7 +34,7 @@ export default function IndexItems({ title }: IndexSort) {
       }
       return [];
     },
-    [productsListLoadable]
+    [productsListLoadable],
   );
 
   useEffect(() => {
@@ -48,18 +48,17 @@ export default function IndexItems({ title }: IndexSort) {
   }, [productsListLoadable, setLoading, filterProducts, title]);
 
   return (
-    <div className="p-20 flex flex-col gap-10">
-      <h2 className="text-xl font-extra">{title}</h2>
+    <div className="py-20 w-full md:w-11/12 lg:w-9/12">
+      <h2 className="text-xl font-extra pl-10 pb-10">{title}</h2>
       {isLoading ? (
         <SkeletonUi />
       ) : (
-        <div className="flex gap-6 flex-nowrap space-between overflow-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
           {data.map((product) => (
-            <div
-              key={product.id}
-              className={`flex flex-col border-[1px] items-center w-96 py-8 px-32`}
-            >
-              <ItemList {...product} />
+            <div key={product.id} className="flex justify-center">
+              <div className="flex flex-col border-[1px] items-center h-[30rem] py-8 grow">
+                <ListItem {...product} />
+              </div>
             </div>
           ))}
         </div>

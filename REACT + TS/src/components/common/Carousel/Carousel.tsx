@@ -71,7 +71,10 @@ export default function Carousel({ carouselList }: Props) {
   }, [currIndex, moveToSlide, carouselList.length]);
 
   return (
-    <div className="w-full relative bg-slate-200" style={{ height: '37.5rem' }}>
+    <div
+      className="w-full relative bg-slate-200 overflow-hidden"
+      style={{ height: '37.5rem' }}
+    >
       <ul
         ref={carouselRef}
         className="flex h-full justify-center items-end -z-50"

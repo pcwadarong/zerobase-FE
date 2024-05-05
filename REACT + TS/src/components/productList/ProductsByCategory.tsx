@@ -1,5 +1,5 @@
 import CategoryList from './CategoryList';
-import ItemList from './ListItem';
+import ListItem from './ListItem';
 import SkeletonUi from './SkeletonUi';
 import SortSelect from '../ui/SortSelect';
 
@@ -77,7 +77,7 @@ export default function ProductsByCategory({ data, setData }: Props) {
               key={product.id}
               className={`flex flex-col grow border-slate-400 border-[1px] items-center md:w-1/2 lg:w-1/3  p-12`}
             >
-              <ItemList {...product} />
+              <ListItem {...product} />
             </div>
           ))}
         </div>

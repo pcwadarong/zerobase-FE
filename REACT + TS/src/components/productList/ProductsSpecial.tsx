@@ -3,7 +3,7 @@ import SkeletonUi from './SkeletonUi';
 import { getSortedData } from '@/utils/getSortedData';
 import SortSelect from '../ui/SortSelect';
 import { useState, useCallback, useEffect } from 'react';
-import ItemList from './ListItem';
+import ListItem from './ListItem';
 import { useRecoilValue } from 'recoil';
 import { isLoadingState } from '@/types/Recoil';
 
@@ -44,8 +44,8 @@ export default function ProductsSpecial({ index, data, setData }: Props) {
   return (
     <div>
       <h1 className="text-2xl font-bold p-20 text-center">
-          {index === 'new' ? 'NEW PRODUCTS' : 'BEST PRODUCTS'}
-        </h1>
+        {index === 'new' ? 'NEW PRODUCTS' : 'BEST PRODUCTS'}
+      </h1>
       <div className="flex justify-between items-center px-4 pb-2">
         {isLoading ? `Counting..` : `Total: ${total} items`}
         <SortSelect onChangeSortType={onChangeSortType} />
@@ -59,7 +59,7 @@ export default function ProductsSpecial({ index, data, setData }: Props) {
               key={product.id}
               className="flex flex-col grow border-slate-400 border-[1px] items-center md:w-1/2 lg:w-1/3  p-12"
             >
-              <ItemList {...product} />
+              <ListItem {...product} />
             </div>
           ))}
         </div>
