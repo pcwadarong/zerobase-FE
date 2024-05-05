@@ -6,6 +6,7 @@ import Search from '../pages/Search';
 import Account from '@/pages/Account';
 import Member from '@/pages/Member';
 import Detail from '@/pages/Detail';
+import Cart from '@/pages/Cart';
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
       <Route path="/products/detail/:id" element={<Detail />} />
       <Route path="/member/:action" element={<Account />} />
       <Route path="/member/info" element={<Member />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 };

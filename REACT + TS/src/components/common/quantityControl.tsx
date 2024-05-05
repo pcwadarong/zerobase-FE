@@ -24,10 +24,10 @@ const QuantityControl = ({ initialAmount, onAmountChange }: Props) => {
 
   return (
     <div className="flex gap-3 items-stretch">
-      <Button onClick={quantityMinus}>-</Button>
+      <button className="border-[1px] border-gray-400 px-3" onClick={quantityMinus}>-</button>
       <input
         type="number"
-        className="w-14"
+        className="w-16 dark:bg-gray-600 rounded-md p-2"
         value={amount}
         onChange={(e) => {
           const value = parseInt(e.target.value);
@@ -36,7 +36,7 @@ const QuantityControl = ({ initialAmount, onAmountChange }: Props) => {
           onAmountChange(newAmount);
         }}
       />
-      <Button onClick={quantityPlus}>+</Button>
+      <button className="border-[1px] border-gray-400 px-3" onClick={quantityPlus}>+</button>
     </div>
   );
 };

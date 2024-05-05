@@ -51,7 +51,7 @@ export default function ItemDetail() {
         <img
           src={data.image}
           alt="item image"
-          className="w-96 border-[1px] p-20 bg-white"
+          className="w-96 border-[1px] border-gray-400 p-20 bg-white"
         />
         <div className="flex flex-col gap-7">
           <h1 className="text-lg font-regular">{data.title}</h1>
@@ -75,15 +75,23 @@ export default function ItemDetail() {
           <Separator />
           <p className="font-regular">{`TOTAL PRICE : $ ${Math.floor(data.price * 0.97) * amount} (${amount} item(s))`}</p>
           <div className="flex gap-3">
-            <Button>ADD TO BAG</Button>
-            <Button onClick={() => nav('/bag')}>ORDER NOW</Button>
-            <Button
+            <button className="border-[1px] border-gray-400 px-5 py-3">
+              ADD TO CART
+            </button>
+            <button
+              className="border-[1px] border-gray-400 px-5 py-3"
+              onClick={() => nav('/bag')}
+            >
+              ORDER NOW
+            </button>
+            <button
+              className="border-[1px] border-gray-400 px-5 py-3"
               onClick={() => {
                 alert('Item is added to wish');
               }}
             >
               ADD TO WISH
-            </Button>
+            </button>
           </div>
         </div>
       </div>

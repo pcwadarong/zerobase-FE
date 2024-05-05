@@ -41,7 +41,7 @@ export default function MemberInfo() {
         <h1 className="text-xl font-regular">MY PAGE</h1>
         <p>{`Welcome ${id}`}</p>
         <Separator />
-        <div className="flex justify-between bg-gray-200/50 p-5">
+        <div className="flex justify-between border-[1px] border-gray-400 p-5">
           <div className="w-1/2">
             <div className="pb-3">Balance</div>
             <div>Order History</div>
@@ -51,7 +51,7 @@ export default function MemberInfo() {
             <div>Coupons</div>
           </div>
         </div>
-        <div className="pb-10">
+        <div className="mb-10 border-[1px] border-gray-400 ">
           <div className="bg-gray-200/50 p-3">ORDER STATUS (Last 3 months)</div>
           <div className="flex flex-wrap justify-between text-center items-center p-5">
             <span className="w-full sm:w-1/5">Awaiting Payment</span>
@@ -66,7 +66,9 @@ export default function MemberInfo() {
           </div>
         </div>
         <div className="flex justify-center sm:justify-end gap-2">
-          <Button onClick={handleLogout}>LOGOUT</Button>
+          <button className="border-[1px] border-gray-400 px-4" onClick={handleLogout}>
+            LOGOUT
+          </button>
           <Button onClick={handleWithdrawal} variant="link">
             WITHDRAWAL
           </Button>

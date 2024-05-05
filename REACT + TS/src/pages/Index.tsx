@@ -6,7 +6,7 @@ import { carouselList } from '@/utils/carouselImg';
 
 const Index = (): JSX.Element => {
   return (
-    <>
+    <div>
       <section>
         <Nav />
         <div className="pt-28"></div>
@@ -17,7 +17,7 @@ const Index = (): JSX.Element => {
         <IndexItems title={`New In`} />
       </section>
       <Footer />
-    </>
+    </div>
   );
 };
 

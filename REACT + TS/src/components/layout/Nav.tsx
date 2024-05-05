@@ -5,6 +5,7 @@ import Toggle from './MenuToggle';
 import User from '../../assets/user.svg';
 import Shopping from '../../assets/shooping.svg';
 import Logo from '../../assets/logo.svg';
+import CartList from '../carts/CartList';
 
 export default function Nav() {
   const nav = useNavigate();
@@ -42,10 +43,10 @@ export default function Nav() {
               <User />
             </div>
             <span className="hidden xl:block">
-              {isLogin ? 'My PAGE' : 'LOG IN'}
+              {isLogin ? 'MY PAGE' : 'LOG IN'}
             </span>
           </button>
-          <button onClick={() => nav('/')} className="flex items-center gap-1">
+          <button onClick={() => nav('/cart')} className="flex items-center gap-1">
             <div className="w-7" role="button">
               <Shopping />
             </div>
