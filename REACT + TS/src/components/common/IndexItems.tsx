@@ -24,11 +24,11 @@ export default function IndexItems({ title }: IndexSort) {
         if (title === `New In`) {
           filteredData = productsListLoadable.contents
             .filter((item) => item.id > 16)
-            .slice(-4); // 뒤에서부터 4개만 선택
+            .slice(-4);
         } else {
           filteredData = productsListLoadable.contents
             .filter((item) => item.rating.rate && item.rating.rate >= 4.6)
-            .slice(-4); // 뒤에서부터 4개만 선택
+            .slice(-4);
         }
         return filteredData;
       }
@@ -48,7 +48,7 @@ export default function IndexItems({ title }: IndexSort) {
   }, [productsListLoadable, setLoading, filterProducts, title]);
 
   return (
-    <div className="p-20 flex flex-col gap-10 justify-center">
+    <div className="p-20 flex flex-col gap-10">
       <h2 className="text-xl font-extra">{title}</h2>
       {isLoading ? (
         <SkeletonUi />
