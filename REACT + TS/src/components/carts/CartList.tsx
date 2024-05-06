@@ -1,11 +1,10 @@
 import { Separator } from '../ui/separator';
-import Xbutton from '../../assets/xButton.svg';
 import { useRecoilState } from 'recoil';
 import { cartState } from '@/types/Recoil';
-import QuantityControl from '../common/quantityControl';
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { ICartState } from '@/types/globalTypes';
 import { useNavigate } from 'react-router-dom';
+import CartView from './CartView';
 
 export default function CartList() {
   const nav = useNavigate();
@@ -67,6 +66,7 @@ export default function CartList() {
     const userInfo = localStorage.getItem('account');
     if (userInfo) {
       alert('Payment has been made');
+      setCartItemData({});
     } else {
       alert('Need to login first.');
       nav('/member/login');
@@ -90,21 +90,23 @@ export default function CartList() {
   };
 
   const removeFromCart = (indexToRemove: number) => {
-    setCartItemData((prevData) => {
-      if (!prevData || !prevData.items) return prevData;
+    if (confirm('Do you want to remove this item?')) {
+      setCartItemData((prevData) => {
+        if (!prevData || !prevData.items) return prevData;
 
-      const updatedItems = { ...prevData.items };
-      delete updatedItems[indexToRemove];
+        const updatedItems = { ...prevData.items };
+        delete updatedItems[indexToRemove];
 
-      return { ...prevData, items: updatedItems };
-    });
+        return { ...prevData, items: updatedItems };
+      });
+    }
   };
 
   return (
     <div className="w-full md:w-11/12 lg:w-9/12 min-h-[35rem] py-16 px-3">
       <h1 className="text-2xl font-bold mb-10">Shopping Cart</h1>
       <div className="sm:flex justify-between gap-16">
-        <div className="w-full">
+        <div className="w-full  mb-10">
           <Separator />
           <div className="flex p-2 gap-3">
             <p className="w-full">ITEM</p>
@@ -116,42 +118,19 @@ export default function CartList() {
           <Separator />
           {cartItems ? (
             Object.values(cartItems).map((item, index) => (
-              <div
-                key={index}
-                className="flex p-2 relative items-center gap-3 justify-between mb-10"
-              >
-                <div className="w-20 h-20 border-[1px] flex justify-center items-center shrink-0">
-                  <img src={item.image} alt={item.title} width="50px" />
-                </div>
-                <span className="w-full truncate">{item.title}</span>
-                <span className="w-20 shrink-0 text-center">
-                  <QuantityControl
-                    initialAmount={item.count}
-                    onAmountChange={(newAmount) =>
-                      handleAmountChange(index, newAmount)
-                    }
-                    size={'small'}
-                  />
-                </span>
-                <span className="w-20 shrink-0 text-center">${item.price}</span>
-                <span className="w-20 shrink-0 text-center">
-                  ${item.price * item.count}
-                </span>
-                <div className="w-8 shrink-0"></div>
-                <button
-                  className="absolute w-4 right-3 top-0 flex items-center h-full"
-                  onClick={() => removeFromCart(index)}
-                >
-                  <Xbutton />
-                </button>
-              </div>
+              <CartView
+                item={item}
+                index={index}
+                handleAmountChange={handleAmountChange}
+                removeFromCart={removeFromCart}
+              />
             ))
           ) : (
-            <div>Search your Item</div>
+            <div className="p-5 text-center">Search your Item</div>
           )}
         </div>
         <div className="sm:w-80 shrink-0">
-          <div className="bg-gray-100 p-8 flex flex-col gap-4">
+          <div className="bg-gray-100 dark:bg-gray-600 p-8 flex flex-col gap-4">
             <h2 className="text-xl font-bold">Order Summary</h2>
             <Separator />
             <div className="flex justify-between">

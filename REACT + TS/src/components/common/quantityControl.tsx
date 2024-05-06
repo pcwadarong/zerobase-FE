@@ -52,11 +52,11 @@ const QuantityControl = ({ initialAmount, onAmountChange, size }: Props) => {
     );
   } else {
     return (
-      <div className="h-full flex items-center">
+      <div className="h-full flex items-center gap-2">
         <button onClick={quantityMinus}>ᐊ</button>
         <input
           type="number"
-          className="w-14 dark:bg-gray-600 rounded-md px-2"
+          className="w-12 dark:bg-gray-600 px-2"
           value={amount}
           onChange={(e) => {
             const value = parseInt(e.target.value);

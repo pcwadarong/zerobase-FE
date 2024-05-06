@@ -79,7 +79,7 @@ export default function ItemDetail() {
             <AddToCart data={data} amount={amount} />
             <button
               className="border-[1px] border-gray-400 px-5 py-3"
-              onClick={() => nav('/bag')}
+              onClick={() => nav('/cart')}
             >
               ORDER NOW
             </button>
