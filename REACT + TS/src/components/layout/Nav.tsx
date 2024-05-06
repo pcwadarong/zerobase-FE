@@ -5,7 +5,6 @@ import Toggle from './MenuToggle';
 import User from '../../assets/user.svg';
 import Shopping from '../../assets/shooping.svg';
 import Logo from '../../assets/logo.svg';
-import CartList from '../carts/CartList';
 
 export default function Nav() {
   const nav = useNavigate();
