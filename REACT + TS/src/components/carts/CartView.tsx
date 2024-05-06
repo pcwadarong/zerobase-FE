@@ -5,14 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
   item: ICartItems;
-  index: number;
   handleAmountChange: (index: number, newAmount: number) => void;
   removeFromCart: (index: number) => void;
 }
-
 export default function CartView({
   item,
-  index,
   handleAmountChange,
   removeFromCart,
 }: Props) {
@@ -20,12 +17,9 @@ export default function CartView({
   const moveToItemDetail = () => {
     nav(`/products/detail/${item.id}`);
   };
-  
+
   return (
-    <div
-      key={index}
-      className="flex p-2 relative items-center gap-3 justify-between"
-    >
+    <div className="flex p-2 relative items-center gap-3 justify-between">
       <div
         onClick={moveToItemDetail}
         className="w-20 h-20 border-[1px] flex justify-center items-center shrink-0 cursor-pointer"
@@ -41,7 +35,7 @@ export default function CartView({
       <span className="w-20 shrink-0 text-center">
         <QuantityControl
           initialAmount={item.count}
-          onAmountChange={(newAmount) => handleAmountChange(index, newAmount)}
+          onAmountChange={(newAmount) => handleAmountChange(item.id, newAmount)}
           size={'small'}
         />
       </span>
@@ -52,7 +46,7 @@ export default function CartView({
       <div className="w-8 shrink-0"></div>
       <button
         className="absolute w-4 right-3 top-0 flex items-center h-full"
-        onClick={() => removeFromCart(index)}
+        onClick={() => removeFromCart(item.id)}
       >
         <Xbutton />
       </button>

@@ -2,7 +2,6 @@ import { useRecoilState } from 'recoil';
 import { cartState } from '@/types/Recoil';
 import { IProduct } from '@/types/globalTypes';
 import { useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
 
 interface Props {
   data: IProduct;
@@ -12,7 +11,6 @@ interface Props {
 const AddToCart = ({ data, amount }: Props) => {
   const [cart, setCart] = useRecoilState(cartState);
   const nav = useNavigate();
-  const itemRef = useRef(Object.keys(cart.items || {}).length);
 
   const addToCart = () => {
     const existingItem = Object.values(cart.items || {}).find(
@@ -33,20 +31,19 @@ const AddToCart = ({ data, amount }: Props) => {
         ...prevCart,
         items: {
           ...(prevCart.items || {}),
-          [Object.keys(prevCart.items || {}).findIndex(
-            (key) => prevCart.items![key] === existingItem,
-          )]: {
+          [existingItem.id]: {
             ...existingItem,
             count: existingItem.count + amount,
           },
         },
       }));
     } else {
+
       setCart((prevCart) => ({
         ...prevCart,
         items: {
-          ...prevCart.items,
-          [itemRef.current++]: newItem,
+          ...(prevCart.items || {}),
+          [newItem.id]: newItem,
         },
       }));
     }

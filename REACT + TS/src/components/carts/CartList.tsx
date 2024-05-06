@@ -1,14 +1,19 @@
-import { Separator } from '../ui/separator';
-import { useRecoilState } from 'recoil';
-import { cartState } from '@/types/Recoil';
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { ICartState } from '@/types/globalTypes';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+
 import CartView from './CartView';
+import { Separator } from '../ui/separator';
+
+import { cartState } from '@/types/Recoil';
+import { ICartState } from '@/types/globalTypes';
+
+import { calculateValue } from '@/utils/calculateValue';
 
 export default function CartList() {
   const nav = useNavigate();
   const [cartItemsData, setCartItemData] = useRecoilState(cartState);
+
   const cartItems = useMemo<ICartState | undefined>(
     () => (cartItemsData ? cartItemsData.items : {}),
     [cartItemsData],
@@ -18,49 +23,6 @@ export default function CartList() {
   const [shipping, setShipping] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [total, setTotal] = useState(0);
-
-  const calculateValue = useCallback(
-    (type: string): number => {
-      if (!cartItems) return 0;
-
-      switch (type) {
-        case 'subtotal': {
-          return Object.values(cartItems).reduce((acc, item) => {
-            return acc + Math.floor(item.custom) * item.count;
-          }, 0);
-        }
-        case 'shipping': {
-          const totalPrice = calculateValue('totalPrice');
-          return totalPrice > 1000 ? 0 : 2;
-        }
-        case 'discount': {
-          const totalPrice = calculateValue('totalPrice');
-          const subtotal = calculateValue('subtotal');
-          return subtotal - totalPrice;
-        }
-        case 'total': {
-          const totalPrice = calculateValue('totalPrice');
-          const shipping = calculateValue('shipping');
-          return totalPrice + shipping;
-        }
-        case 'totalPrice': {
-          return Object.values(cartItems).reduce((acc, item) => {
-            return acc + Math.floor(item.price) * item.count;
-          }, 0);
-        }
-        default:
-          return 0;
-      }
-    },
-    [cartItems],
-  );
-
-  useEffect(() => {
-    setSubtotal(calculateValue('subtotal'));
-    setShipping(calculateValue('shipping'));
-    setDiscount(calculateValue('discount'));
-    setTotal(calculateValue('total'));
-  }, [calculateValue]);
 
   const handleCheckout = () => {
     const userInfo = localStorage.getItem('account');
@@ -83,6 +45,16 @@ export default function CartList() {
       if (currentItem) {
         const updatedItem = { ...currentItem, count: newAmount };
         updatedItems[index] = updatedItem;
+
+        const newSubtotal = calculateValue('subtotal', updatedItems);
+        const newShipping = calculateValue('shipping', updatedItems);
+        const newDiscount = calculateValue('discount', updatedItems);
+        const newTotal = calculateValue('total', updatedItems);
+
+        setSubtotal(newSubtotal);
+        setShipping(newShipping);
+        setDiscount(newDiscount);
+        setTotal(newTotal);
       }
 
       return { ...prevData, items: updatedItems };
@@ -97,7 +69,11 @@ export default function CartList() {
         const updatedItems = { ...prevData.items };
         delete updatedItems[indexToRemove];
 
-        return { ...prevData, items: updatedItems };
+        if (Object.keys(updatedItems).length === 0) {
+          return {};
+        } else {
+          return { ...prevData, items: updatedItems };
+        }
       });
     }
   };
@@ -117,10 +93,10 @@ export default function CartList() {
           </div>
           <Separator />
           {cartItems ? (
-            Object.values(cartItems).map((item, index) => (
+            Object.values(cartItems).map((item) => (
               <CartView
+                key={item.id}
                 item={item}
-                index={index}
                 handleAmountChange={handleAmountChange}
                 removeFromCart={removeFromCart}
               />
