@@ -4,7 +4,7 @@ import CartList from '@/components/carts/CartList';
 
 export default function Cart() {
   return (
-    <div>
+    <div className='flex flex-col items-center'>
       <Nav />
       <div className="pt-28"></div>
       <CartList />

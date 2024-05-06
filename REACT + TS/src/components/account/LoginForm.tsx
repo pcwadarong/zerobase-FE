@@ -2,7 +2,8 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { isLoginState, userIDState, passwordState } from '@/types/Recoil';
+import { isLoginState } from '@/types/Recoil';
+import { userIDState, passwordState } from '@/utils/saveAccount';
 import { FormProps } from '@/types/globalTypes';
 
 export default function LoginForm(props: FormProps) {

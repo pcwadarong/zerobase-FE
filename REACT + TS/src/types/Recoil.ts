@@ -1,4 +1,6 @@
-import { atom, selector } from 'recoil';
+import { atom } from 'recoil';
+import { ICartState } from './globalTypes';
+import { CART_ITEM } from '@/components/constants/constants';
 
 export const isLoadingAtom = atom({
   key: 'isLoadingAtom',
@@ -34,50 +36,14 @@ export const userAccount = atom({
   },
 });
 
-export const userIDState = selector({
-  key: 'userIDState',
-  get: ({ get }) => {
-    const userAccountState = get(userAccount);
-    return userAccountState.userID;
-  },
-  set: ({ set }, newValue) => {
-    if (typeof newValue === 'string') {
-      set(userAccount, (prevState) => ({
-        ...prevState,
-        userID: newValue,
-      }));
-    }
-  },
-});
-
-export const passwordState = selector({
-  key: 'passwordState',
-  get: ({ get }) => {
-    const userAccountState = get(userAccount);
-    return userAccountState.password;
-  },
-  set: ({ set }, newValue) => {
-    if (typeof newValue === 'string') {
-      set(userAccount, (prevState) => ({
-        ...prevState,
-        password: newValue,
-      }));
-    }
-  },
-});
-
-export const emailState = selector({
-  key: 'emailState',
-  get: ({ get }) => {
-    const userAccountState = get(userAccount);
-    return userAccountState.email;
-  },
-  set: ({ set }, newValue) => {
-    if (typeof newValue === 'string') {
-      set(userAccount, (prevState) => ({
-        ...prevState,
-        email: newValue,
-      }));
-    }
-  },
+export const cartState = atom<ICartState>({
+  key: 'cart',
+  default: {},
+  effects: [
+    ({ setSelf, onSet }) => {
+      localStorage.getItem(CART_ITEM) &&
+        setSelf(JSON.parse(localStorage.getItem(CART_ITEM) as string));
+      onSet((value) => localStorage.setItem(CART_ITEM, JSON.stringify(value)));
+    },
+  ],
 });

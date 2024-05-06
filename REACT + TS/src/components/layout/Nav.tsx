@@ -21,10 +21,7 @@ export default function Nav() {
 
   return (
     <div className="h-28 fixed z-10 drop-shadow-lg flex items-center justify-center bg-white/90 w-full backdrop-blur-sm dark:bg-gray-900/90">
-      <div
-        className="flex justify-between p-7 items-center text-md"
-        style={{ width: '1600px' }}
-      >
+      <div className="flex justify-between p-7 items-center text-md w-[100rem]">
         <div className="flex gap-4 sm:w-5/12 text-right items-center xl:gap-8">
           <Toggle />
           <Link className="hidden sm:flex" to="/best">
@@ -46,7 +43,10 @@ export default function Nav() {
               {isLogin ? 'MY PAGE' : 'LOG IN'}
             </span>
           </button>
-          <button onClick={() => nav('/cart')} className="flex items-center gap-1">
+          <button
+            onClick={() => nav('/cart')}
+            className="flex items-center gap-1"
+          >
             <div className="w-7" role="button">
               <Shopping />
             </div>

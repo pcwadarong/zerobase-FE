@@ -1,10 +1,10 @@
 import { selector } from 'recoil';
 import axios from 'axios';
-import CONSTANTS from '../components/constants/constants';
+import { IS_DEV } from '../components/constants/constants';
 import { IProduct } from '@/types/globalTypes';
 import { isLoadingState } from '@/types/Recoil';
 
-const productsURL = `${CONSTANTS.IS_DEV ? `/proxy` : `${import.meta.env.VITE_FAKE_STORE_API}`}/products`;
+const productsURL = `${IS_DEV ? `/proxy` : `${import.meta.env.VITE_FAKE_STORE_API}`}/products`;
 
 export function getCateProductUrl(category: string) {
   switch (category) {

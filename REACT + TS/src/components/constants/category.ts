@@ -5,5 +5,3 @@ export const Category: { [key: string]: string } = {
   "digital" :  'electronics',
   "accessory" : 'jewelery',
 } as const;
-
-export const CART_ITEM = 'CART_ITEM';

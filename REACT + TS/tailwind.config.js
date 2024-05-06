@@ -75,9 +75,10 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       width: {
+        '1600px': '100rem',
         '1280px': '80rem',
-        '480px': '30rem',
         '560px': '35rem',
+        '480px': '30rem',
       },
     },
   },

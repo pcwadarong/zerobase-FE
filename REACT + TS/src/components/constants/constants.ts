@@ -1,20 +1,3 @@
-const IS_DEV: boolean = "development" === import.meta.env.MODE; // 개발 환경 전용
+export const IS_DEV: boolean = "development" === import.meta.env.MODE;
 
-const KEY = {
-  ARROW_DOWN: "ArrowDown",
-  ARROW_UP: "ArrowUp",
-  ENTER: "Enter",
-} as const;
-
-const THEME = {
-  DARK: "dark",
-  LIGHT: "light",
-};
-
-const CONSTANTS = {
-  IS_DEV,
-  KEY,
-  THEME,
-};
-
-export default CONSTANTS;
+export const CART_ITEM = 'CART_ITEM';

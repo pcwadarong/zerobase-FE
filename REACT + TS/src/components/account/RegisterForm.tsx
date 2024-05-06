@@ -2,7 +2,7 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { userIDState, passwordState, emailState } from '@/types/Recoil';
+import { userIDState, passwordState, emailState } from '@/utils/saveAccount';
 import { FormProps } from '@/types/globalTypes';
 
 export default function RegisterForm(props: FormProps) {

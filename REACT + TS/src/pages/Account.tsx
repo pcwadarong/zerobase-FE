@@ -3,7 +3,7 @@ import Nav from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { userIDState, passwordState } from '@/types/Recoil';
+import { userIDState, passwordState } from '@/utils/saveAccount';
 import { useState, useEffect } from 'react';
 import RegisterForm from '@/components/account/RegisterForm';
 import LoginForm from '@/components/account/LoginForm';

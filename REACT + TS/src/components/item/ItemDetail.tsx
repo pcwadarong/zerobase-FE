@@ -1,6 +1,5 @@
 import { Separator } from '../ui/separator';
 import QuantityControl from '../common/quantityControl';
-import { Button } from '@/components/ui/button';
 import { useParams } from 'react-router-dom';
 import { isLoadingState } from '@/types/Recoil';
 import { getProductsList } from '@/utils/getProducts';
@@ -9,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { IProduct } from '@/types/globalTypes';
 import LoadingIndicator from '@/components/ui/LoadingIndicator';
 import { useNavigate } from 'react-router-dom';
+import AddToCart from '../carts/AddtoCart';
 
 export default function ItemDetail() {
   const [isLoading, setLoading] = useRecoilState(isLoadingState);
@@ -27,7 +27,7 @@ export default function ItemDetail() {
         setData(product);
         setLoading(false);
       } else {
-        alert('error'); // handle error or not found case
+        alert('error');
       }
     } else if (productsListLoadable.state === 'loading') {
       setLoading(true);
@@ -71,13 +71,12 @@ export default function ItemDetail() {
           <QuantityControl
             initialAmount={amount}
             onAmountChange={handleAmountChange}
+            size={'big'}
           />
           <Separator />
           <p className="font-regular">{`TOTAL PRICE : $ ${Math.floor(data.price * 0.97) * amount} (${amount} item(s))`}</p>
           <div className="flex gap-3">
-            <button className="border-[1px] border-gray-400 px-5 py-3">
-              ADD TO CART
-            </button>
+            <AddToCart data={data} amount={amount} />
             <button
               className="border-[1px] border-gray-400 px-5 py-3"
               onClick={() => nav('/bag')}
