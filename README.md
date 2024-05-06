@@ -13,3 +13,7 @@
 - star-rating
 - date picker
 - news viewer
+
+## REACT + TYPESCRIPT
+
+- 쇼핑몰 웹 사이트 구현
